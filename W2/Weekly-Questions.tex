@@ -1,0 +1,85 @@
+\section{Weekly worksheet and lecture questions}\label{weekly}
+The questions below come from the named weekly PDFs. Detailed methods are in the linked knowledge sections; only source-specific work is repeated here.
+
+\subsection{\texttt{Week2.pdf}, page 1 --- describing a plane}
+\textbf{Question (source wording).} Describe the graph of $f(x,y)=1+x-y$. Work with cross-sections first; use them to predict the full surface. Fill the $x=a$ and $y=b$ cross-section equations and the directions of change.\par
+\textbf{Necessary work.} $x=a:\ z=1+a-y$ decreases as $y$ increases. $y=b:\ z=1+x-b$ increases as $x$ increases.\par
+\textbf{Answer.} An infinite plane sloping down in the positive $y$ direction and up in the positive $x$ direction. See \hyperref[surface]{surface description} and \hyperref[cross]{cross-sections}.
+
+\subsection{\texttt{Week2.pdf}, page 2 --- common surfaces and ambient space}
+\textbf{Question (source wording).} For each equation, name the surface and decide whether the whole surface is the graph of a function $z=f(x,y)$: $z=2-x+3y$, $z=x^2+y^2$, $x^2+y^2+z^2=4$, $z=x^2$. Graph $x^2+y^2=1$ first in $\R^2$, then in $\R^3$; use the missing-variable cylinder test.\par
+\textbf{Necessary work and answers.}\begin{center}\begin{tabular}{lll}\toprule Equation & Surface & $z=f(x,y)$?\\\midrule $z=2-x+3y$ & plane & yes\\$z=x^2+y^2$&circular paraboloid&yes\\$x^2+y^2+z^2=4$&radius-2 sphere&no\\$z=x^2$&parabolic cylinder parallel to $y$&yes\\\bottomrule\end{tabular}\end{center}
+In $\R^2$, $x^2+y^2=1$ is a unit circle. In $\R^3$, $z$ is free, so the unit circle extrudes parallel to $z$ into a circular cylinder, which is not a $z$-function. See \hyperref[cylinder]{cylinders}.
+
+\subsection{\texttt{Week2.pdf}, page 3; textbook 12.2 Problem 19 --- six cross-sections}
+\textbf{Question (source wording).} Let $f(x,y)=y^3+xy$. Find the indicated equations, then draw graphs of each family of cross-sections on the same plane: (a) fix $x=-1,0,1$; (b) fix $y=-1,0,1$.\par
+\textbf{Necessary work.} (a) Substitute the three $x$ values to obtain $z=y^3-y,y^3,y^3+y$ on $yz$ axes. (b) Substitute the three $y$ values to obtain $z=-1-x,0,1+x$ on $xz$ axes.\par
+\textbf{Answer.} The two labelled families are in the figure below and derived in \hyperref[cross]{cross-sections}.
+\fig{.83}{03-cross-sections.png}
+
+\subsection{\texttt{Week2.pdf}, pages 4--5 --- paraboloid and cone contours}
+\textbf{Question (source wording).} Find equations for the contours of $f(x,y)=x^2+y^2$, draw a diagram for $c=0,2,4,6,8$, and relate spacing to the graph. Then draw contours of $g(x,y)=\sqrt{x^2+y^2}$ for $c=0,1,2,3$ and compare the cone with the paraboloid.\par
+\textbf{Necessary work and answers.} $f=c$ gives radius $\sqrt c$ for $c\geq0$; levels $0,2,4,6,8$ have radii $0,\sqrt2,2,\sqrt6,2\sqrt2$. $g=c$ gives radius $c$ for $c\geq0$; levels $0,1,2,3$ have radii $0,1,2,3$. For equal output steps, the paraboloid's circles become closer outward (steeper bowl), whereas cone circles are evenly spaced (constant radial slope). Different-value contours cannot intersect; the numerical labels determine which way is uphill. See \hyperref[radial]{algebraic contours}.
+\fig{.84}{04-radial-contours.png}
+
+\subsection{\texttt{Week2.pdf}, page 6 --- contour exercise}
+\textbf{Question (source wording).} Make a contour plot for $z=2y-x$ with at least three different contours. Label each contour with its value of $z$. The worksheet lists $c=0,2,4,6$. Which direction in the $xy$-plane gives increasing values of $z$?\par
+\textbf{Necessary work.} $z=c$ gives $y=x/2+c/2$.\par
+\textbf{Answer.} Four parallel slope-$1/2$ lines $y=x/2,x/2+1,x/2+2,x/2+3$, labelled $0,2,4,6$. Move in positive $y$ or negative $x$ for higher labels. See \hyperref[plane]{linear contours}.
+\fig{.82}{05-plane-saddle-contours.png}
+
+\subsection{\texttt{Week2.pdf}, pages 7--8 --- numerical saddle table}
+\textbf{Question (source wording).} Relate the table for $f(x,y)=x^2-y^2$ to its contour diagram. (1) Locate zero entries and algebraically solve $x^2-y^2=0$. (2) Mark positive and negative regions and symmetries. On the grid draw and label $z=-4,-2,0,2,4$. Use the table to decide where each branch lies; relate the contours to the saddle graph.\par
+\textbf{Source table and work.} The complete $7\times7$ source table is reproduced in \hyperref[saddle]{the saddle knowledge section}. The zero entries lie on $y=x$ or $y=-x$. Positives occupy left/right sectors and negatives top/bottom sectors. A nonzero level has two branches.\par
+\textbf{Answer.} $0$: both diagonal lines; $2,4$: left/right opening hyperbolas; $-2,-4$: up/down opening hyperbolas. The graph has ridges in the $x$ directions and valleys in the $y$ directions. See \hyperref[saddle]{saddle contours}.
+
+\subsection{\texttt{Week2.pdf}, pages 9--10 --- Fall 2025 term-test tent}
+\textbf{Question (source wording).} The four corners of the tent are $A=(0,0,0)$, $B=(2,0,0)$, $C=(2,3,0)$, $D=(0,3,0)$, and the ridge endpoints are $P=(1,0,4)$, $Q=(1,3,4)$. Let $h(x,y)$ be the height, in metres, of the tent at position $(x,y)$; the ground has height $0$. Find a formula for the roof height and for $0<c<4$ solve $h(x,y)=c$. (a) Sketch at least three contours of $h$, with heights labelled. (b) Shoes are at $(0,1,0)$ and a bug is at $(1/2,1,h(1/2,1))$; find their Euclidean distance.\par
+\textbf{Necessary work and answers.} $h=4x$ on $0\leq x\leq1$, and $h=8-4x$ on $1\leq x\leq2$; in both pieces $0\leq y\leq3$. For $0<c<4$, $x=c/4$ and $x=2-c/4$. Height locations: $c=0$ at $x=0,2$; $c=1$ at $1/4,7/4$; $c=2$ at $1/2,3/2$; $c=3$ at $3/4,5/4$; $c=4$ at $x=1$. All are segments with $0\leq y\leq3$. The bug has height $2$ m, and its distance to the shoes is $\sqrt{17}/2$ m. See \hyperref[tent]{tent method}.
+\fig{.80}{06-tent.png}
+
+\subsection{\texttt{sep+14.pdf}, pages 1--4 --- function test, shifts, and saddle slices}
+\textbf{Questions (source wording).} Can a vertical line parallel to the $z$-axis intersect the graph $z=x^2+y^2$ twice? Can the sphere $x^2+y^2+z^2=1$ be seen as a graph of one function? Express it as two graphs. Describe the transformations $z=x^2+y^2\mapsto z=(x-1)^2+(y-2)^2$, $z=x+y\mapsto z=x+y+1$, and reflection of the upper hemisphere. For the paraboloid $z=x^2+y^2$, take a slice $y=a$. Get slices for $z=x^2-y^2$.\par
+\textbf{Necessary work and answers.} The paraboloid passes the vertical-line test. The sphere fails at $(0,0,\pm1)$; its hemispheres are $z=\pm\sqrt{1-x^2-y^2}$ on $x^2+y^2\leq1$. The first shift is by $(1,2,0)$, the plane rises one unit, and the hemisphere reflection changes $z$ to $-z$. The paraboloid slice is $y=a,\ z=x^2+a^2$, an upward \emph{parabola}; for the saddle, $y=a$ gives $z=x^2-a^2$, while $x=a$ gives $z=a^2-y^2$. See \hyperref[transform]{transformations} and \hyperref[cross]{cross-sections}.
+
+\subsection{\texttt{sep+16.pdf}, pages 1--4 --- cylinders and a downward bowl}
+\textbf{Questions (source wording).} For $z=x^2$, what happens when $x$ is fixed and $y$ moves? Compare $z=x^2$ with $x^2+y^2=4$. For $f=9-x^2-y^2$, take horizontal slices $z=a$, including $a=8,5$, and say what happens for $a>9$. Interpret equal levels $9,8,7,6,\ldots$.\par
+\textbf{Necessary work and answers.} With $x=x_0$, the entire generator $\{(x_0,y,x_0^2):y\in\R\}$ remains on $z=x^2$, making a parabolic cylinder parallel to $y$; $x^2+y^2=4$ is a circular cylinder parallel to $z$. For $f=a$, $x^2+y^2=9-a$: $a=8$ is radius $1$, $a=5$ radius $2$, $a=9$ is the origin, and $a>9$ is empty. Outward equal-height steps become closer, so the bowl descends more rapidly. See \hyperref[cylinder]{cylinders} and \hyperref[radial]{radial contours}.
+
+\subsection{\texttt{sep+18.pdf}, pages 1--4 --- interpolating a contour}
+\textbf{Question (source wording).} Given $f$ at $x=0,2,4$ and $y=0,2,4$, sketch an approximate $f=6$ contour by estimating where it crosses the sampled rows. The note also contrasts $f=x+2y$, $f=x^2+y^2$, and $f=x^2-y^2$.\par
+\textbf{Source data, necessary work, and answer.} The complete $3\times3$ table and exact lookups are in \hyperref[table]{numerical contour construction}. Linear row interpolation gives $(3,0),(2,2),(1,4)$ and the approximate segment $2x+y=6$ within the sampled square. For $x+2y=c$, contours are parallel lines of slope $-1/2$; for $x^2+y^2=c$, positive levels are circles, zero is a point, negative levels empty; for $x^2-y^2=c$, levels are hyperbolas for $c\ne0$ and intersecting diagonals for $c=0$.
+
+\subsection{\texttt{MAT235H-5201-Sept-16.pdf}, pages 2--4 --- initial review}
+\textbf{Source representations.} The opening slides contrast one-input and two-input functions. Their small illustrative one-variable table has input $x=1,2,3.14$ and output $1,0,2$ respectively:
+\begin{center}\begin{tabular}{c|rrr}\toprule $x$&1&2&3.14\\\midrule output&1&0&2\\\bottomrule\end{tabular}\end{center}
+No interpolation rule or units are supplied. The cylinder-volume example is $V(r,h)=\pi r^2h$, with radius $r\geq0$ and height $h\geq0$ (length units), so volume uses cubic length units and depends on two inputs. A spatial point $P=(x_0,y_0,z_0)$ is located by its three coordinates; the coordinate-point representation appears below in the later review question. These pages supply background rather than new assigned problems.
+
+\subsection{\texttt{MAT235H-5201-Sept-16.pdf}, page 7 --- wind-chill table (review)}
+\textbf{Question (source wording).} Let $C=f(w,T)$ be wind chill in degrees F, with wind speed $w$ in mph and actual temperature $T$ in degrees F. Evaluate and interpret $f(20,5)$. At actual $T=5$ F, find the wind speed giving a wind chill of $-10$ F.\par
+\begin{center}\small\begin{tabular}{c|rrrrrrrr}\toprule $w\backslash T$ &35&30&25&20&15&10&5&0\\\midrule5&31&25&19&13&7&1&$-5$&$-11$\\10&27&21&15&9&3&$-4$&$-10$&$-16$\\15&25&19&13&6&0&$-7$&$-13$&$-19$\\20&24&17&11&4&$-2$&$-9$&$-15$&$-22$\\25&23&16&9&3&$-4$&$-11$&$-17$&$-24$\\\bottomrule\end{tabular}\end{center}
+\textbf{Necessary work and answers.} Fix row $w=20$ and read across to column $T=5$: $f(20,5)=-15$ F, meaning 5 F air at 20 mph feels like $-15$ F. Fix column $T=5$ and read down to $-10$: $w=10$ mph. The row variable is speed, the column variable is actual temperature, and each entry is wind chill. At fixed $T=5$ F, wind chill falls as $w$ increases. At fixed $w=20$ mph, it rises with $T$. This is a review of 12.1, not a 12.2/12.3 textbook exercise.
+
+\subsection{\texttt{MAT235H-5201-Sept-16.pdf}, pages 5, 6, 9, 11 --- other review questions}
+\textbf{Questions (source wording).} Plot $P=(0,0,2)$, $Q=(3,4,0)$, $R=(0,4,5)$, $S=(3,4,5)$. For $f(x,y)=x^2+y^2$ evaluate at $x,y\in\{0,1,-1\}$ and sketch $g(x,y)=3$. Which of $A=(1,-1,0), B=(0,3,4), C=(2,2,1), D=(0,-4,0)$ is nearest the $xz$-plane, and which lies on the $y$-axis? For room temperature $T=f(d,t)$, where $d$ is metres from a heater and $t$ is minutes after switching it on, describe and sketch $t$ and $d$ cross-sections qualitatively.\par
+\textbf{Necessary work and answers.} $P$ lies on the $z$-axis, $Q$ in the $xy$-plane, $R$ in the $yz$-plane, $S$ in the positive octant. For rows $x=0,1,-1$ and columns $y=0,1,-1$, $f$ rows are $(0,1,1),(1,2,2),(1,2,2)$; $g=3$ is a horizontal infinite plane. Distance to the $xz$-plane is $|y|$, so $A$ is closest, and $D$ lies on the $y$-axis. Under the heater scenario, fixed-$d$ temperature curves generally rise with $t$, and fixed-$t$ curves generally fall as $d$ increases; no exact formula or unique quantitative graph is supplied, so the sketches are qualitative. See \hyperref[graph]{graphs} and \hyperref[cross]{cross-sections}.
+
+The following two panels are \emph{illustrative} graphs for the heater, using an explicitly chosen model $T(d,t)=20+10(1-e^{-t/4})e^{-d/2}$ degrees C. The source states no formula, so these curves show the requested qualitative trend rather than unique numerical data. On the left $d$ is fixed and $t$ is free; on the right $t$ is fixed and $d$ is free.
+\fig{.84}{12-heater-cross-sections.png}
+\fig{.75}{13-coordinates-plane.png}
+
+\subsection{\texttt{MAT235H-5201-Sept-16.pdf}, pages 24--27; September 17 pages 1--3 --- preview exercises}
+\textbf{Questions (source wording).} From the airline-revenue table, find $R(d,f)$ for discount tickets $d$ and full fares $f$, with revenue in thousands of dollars. Find the plane through $(4,0,0),(0,3,0),(0,0,2)$. Decide which of three given numerical tables could represent linear functions. Sketch $x^2+y^2=4$, $x^2+z^2=9$, and $y=x^2$ in 3D. Find the equation of a sphere of radius $r$ centered at the origin. Two later-slide equations are $z=2-2x+y$ and $z=2-x-2y$ (their original graphing instruction is absent from that page).\par
+\begin{center}\small\begin{tabular}{c|rrrr}\toprule $d\backslash f$&0&100&200&300\\\midrule0&0&24&48&72\\100&8&32&56&80\\200&16&40&64&88\\300&24&48&72&96\\\bottomrule\end{tabular}\end{center}
+Here rows give $d$, columns $f$, and entries $R$ in thousands of dollars. Fix $d=100$ and read across: $R(100,200)=56$ thousand dollars. Fix $f=100$ and read down: $R(200,100)=40$ thousand dollars. Each extra 100 discount tickets adds $8$ thousand dollars and each extra 100 full fares adds $24$ thousand dollars.\par
+The three classification tables below reproduce the source data. In each, rows are $x$, columns are $y$, and entries are $f(x,y)$ (no physical units supplied).
+\begin{center}\small
+\begin{tabular}{c|rrr}\toprule A: $x\backslash y$&0&5&10\\\midrule1&2&4&6\\5&4&8&12\\9&8&16&32\\\bottomrule\end{tabular}\quad
+\begin{tabular}{c|rrr}\toprule B: $x\backslash y$&0&3&6\\\midrule0&1&$-4$&$-9$\\2&4&$-1$&$-6$\\4&7&2&$-3$\\6&10&5&0\\\bottomrule\end{tabular}\quad
+\begin{tabular}{c|rrrr}\toprule C: $x\backslash y$&0&1&2&3\\\midrule0&1&1&1&1\\1&2&2&2&2\\2&1&1&1&1\\3&2&2&2&2\\\bottomrule\end{tabular}
+\end{center}
+\textbf{Necessary work and answers.} $R=0.08d+0.24f$ (thousands of dollars). The plane is $x/4+y/3+z/2=1$. Of the source tables, A is nonlinear because its increments vary, B is consistent with $1+3x/2-5y/3$, and C is nonlinear because its $x$ values alternate $1,2,1,2$ in each row. The three requested surfaces are cylinders parallel to $z$, $y$, and $z$ respectively; the first two are circular with radii $2$ and $3$, the third parabolic. The sphere equation is $x^2+y^2+z^2=r^2$ ($r\geq0$). The later planes have axis intercepts $(1,-2,2)$ and $(2,1,2)$. These questions preview 12.4 or review 12.2; the slide with the final two equations does not show a full prompt, so no missing wording is invented.
+
+\subsection{\texttt{MAT235H-5201-Sept-17.pdf}, pages 4--5 --- level surfaces (preview)}
+\textbf{Questions (source wording).} In a block of ice, $T(x,y,z)=\tfrac14(x^2+y^2+z^2)$ degrees C, with coordinates measured in metres. Why is its full graph beyond ordinary 3D space? Find and explain level surfaces for $T=1,5,9$. Describe level surfaces of (a) $e^{-(x^2+y^2)}$, (b) $z-y$, and (c) $\ln(x^2+y^2+z^2)$.\par
+\textbf{Necessary work and answers.} The graph of a three-input scalar function requires three input coordinates plus an output coordinate (4D). In physical 3D space, $T=c$ is a sphere $x^2+y^2+z^2=4c$; radii at $1,5,9$ are $2,2\sqrt5,6$ m. For (a), only $0<c\leq1$ occurs; $0<c<1$ gives circular cylinders $x^2+y^2=-\ln c$ parallel to $z$, while $c=1$ gives the $z$-axis. For (b), $z=y+c$ is a plane parallel to $x$ for any real $c$. For (c), $x^2+y^2+z^2=e^c$ is a sphere of radius $e^{c/2}$ for any real $c$, with origin excluded from the logarithm's domain. See \hyperref[preview]{preview explanation}.

@@ -1,0 +1,39 @@
+\section{Original self-test}\label{selftest}
+These questions are newly written and independent of the textbook exercise bank. Try them without reading the answers that follow. Their figures and tables contain all data needed.
+\subsection*{Questions}
+\begin{enumerate}[label=\textbf{Q\arabic*.},leftmargin=*]
+\item A set in $\R^3$ is given by $x^2+y^2+z^2=9$. Is the whole set a graph $z=f(x,y)$? Explain using one input pair. State a suitable domain for each branch after splitting it into two graphs. (See \hyperref[surface]{surface description}.)
+\item Describe $z=3-2x+y$: object, axis intercepts, $x=0$ and $y=0$ traces, directions of increase, and infinite or finite extent. (See \hyperref[surface]{surfaces}.)
+\item For $z=x^2-y^2$, find the two sections $x=2$ and $y=-1$ and identify each graph's shape and plane. (See \hyperref[cross]{cross-sections}.)
+\item For $F(x,y)=y^2+2xy$, write the $x=0$, $x=1$, $y=0$, and $y=2$ cross-sections. State the horizontal plotting coordinate of each family. (See \hyperref[cross]{cross-sections}.)
+\item In $\R^3$, describe $y^2+z^2=4$. Which coordinate is free? Can the full set be written as $z=f(x,y)$? (See \hyperref[cylinder]{cylinders}.)
+\item For $f=x^2+4y^2$, find and sketch the $c=0,4,16$ contours with axis intercepts and allowable $c$. What is the 3D shape? (See \hyperref[radial]{algebraic contours}.)
+\item For $g(x,y)=9-\sqrt{x^2+y^2}$, give $g=8,7,6$ contour radii and tell where the values increase. (See \hyperref[radial]{contours}.)
+\item For $p(x,y)=3x-y+2$, write the $p=-1,2,5$ contours, their common slope, and a direction of increasing values. (See \hyperref[plane]{linear contours}.)
+\item Read the table below, with $x$ across columns, $y$ down rows, and entries $v(x,y)$ in metres. Find $v(2,1)$ exactly. Estimate where $v=5$ crosses rows $y=0,1,2$ by linear interpolation. Sketch the approximate contour inside the table's square. (See \hyperref[table]{table construction}.)
+\begin{center}\begin{tabular}{c|rrr}\toprule $y\backslash x$ (m)&0&1&2\\\midrule0&9&7&5\\1&8&6&4\\2&7&5&3\\\bottomrule\end{tabular}\end{center}
+\item Use the following labelled contour map of $q(x,y)=12-x^2-y^2$. The point $A=(1.5,0)$ lies between the contours $10$ and $8$. Give a range for $q(A)$, estimate it from the map, then compute it exactly from the formula. What do close equal-label-interval contours imply? (See \hyperref[estimate]{map reading}.)\fig{.78}{10-self-test.png}
+\item For $s(x,y)=x^2-y^2$, describe the $s=0$, $s=3$, and $s=-3$ levels. How many components does each have? Can distinct-value contours cross? (See \hyperref[saddle]{saddle contours}.)
+\item A triangular tent spans $0\leq x\leq4$ m and $0\leq y\leq2$ m; its ridge is along $x=2$ at height $6$ m, and its side edges have height $0$. Find its roof-height formula and the $3$ m contour. (See \hyperref[tent]{finite-domain roof}.)
+\item (Supplementary) Starting from $z=x^2+y^2$, describe $z=(x+2)^2+(y-1)^2-3$ and name its vertex. (See \hyperref[transform]{transformations}.)
+\item (Supplementary) A production model is $P(N,V)=\sqrt{NV}$ for positive $N,V$. Find the $P=4$ contour and interpret how $V$ must change if $N$ doubles. (See \hyperref[supplement]{production}.)
+\item (Preview) If $H(x,y,z)=x^2+y^2+z^2$, describe the level surfaces $H=0,1,4$. If $J=z-y$, describe $J=2$. State which objects are spheres and which are planes. (See \hyperref[preview]{level surfaces}.)
+\end{enumerate}
+\subsection*{Answers and correction notes}
+\begin{enumerate}[label=\textbf{A\arabic*.},leftmargin=*]
+\item No: $(x,y)=(0,0)$ yields $z=\pm3$. The two branches are $z=\pm\sqrt{9-x^2-y^2}$ on $x^2+y^2\leq9$.
+\item An infinite plane. Intercepts $(3/2,0,0),(0,-3,0),(0,0,3)$. At $x=0$, $z=3+y$; at $y=0$, $z=3-2x$. Height decreases with increasing $x$ and increases with increasing $y$.
+\item $x=2:\ z=4-y^2$ is downward in the plane $x=2$; $y=-1:\ z=x^2-1$ is upward in the plane $y=-1$.
+\item $x=0:\ z=y^2$; $x=1:\ z=y^2+2y$ (horizontal axis $y$). $y=0:\ z=0$; $y=2:\ z=4+4x$ (horizontal axis $x$).
+\item $x$ is free; the set is a radius-2 circular cylinder parallel to $x$. It is not a full $z$-function because $z=\pm\sqrt{4-y^2}$ at interior values $|y|<2$.
+\item $c<0$ empty; $c=0$ origin; $c=4$ ellipse intercepts $(\pm2,0),(0,\pm1)$; $c=16$ ellipse intercepts $(\pm4,0),(0,\pm2)$. The graph is an upward elliptic paraboloid.
+\item $g=c$ gives radius $9-c$, hence $1,2,3$. Higher values lie toward the origin, where $g(0,0)=9$.
+\item $y=3x+3$, $y=3x$, $y=3x-3$ for $p=-1,2,5$. All slopes are $3$. Move toward $(3,-1)$ to increase $p$.
+\item $v(2,1)=4$ m. At $y=0$, $v=5$ at $x=2$; at $y=1$, halfway between $6$ and $4$ gives $x=1.5$; at $y=2$, $v=5$ at $x=1$. Join $(2,0),(1.5,1),(1,2)$. A matching affine interpolation is $2x+y=4$ within the square; it is not established globally.
+\item $8<q(A)<10$; radial interpolation gives about $9.7$, while direct substitution gives $9.75$. Close contours for equal differences in $q$ indicate faster horizontal change / a steeper surface.
+\item $s=0$ is $y=\pm x$, two intersecting lines that together form one connected set. $s=3$ has two left/right opening branches; $s=-3$ has two up/down opening branches. Different-value contours cannot cross for a function.
+\item $h=3x$ for $0\leq x\leq2$ and $h=12-3x$ for $2\leq x\leq4$, with $0\leq y\leq2$. At $h=3$, $x=1$ and $x=3$, each a segment $0\leq y\leq2$.
+\item Translation by $(-2,1,-3)$; upward paraboloid with vertex $(-2,1,-3)$.
+\item $\sqrt{NV}=4$ gives $NV=16$, hence $V=16/N$. If $N$ doubles, $V$ halves to maintain production $4$.
+\item $H=0$ is the single origin; $H=1,4$ are spheres centered at the origin with radii $1,2$. $J=2$ is the infinite plane $z=y+2$, parallel to the $x$-axis.
+\end{enumerate}

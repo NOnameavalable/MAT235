@@ -1,0 +1,323 @@
+Create complete English study notes in LaTeX for the specified week.
+
+INPUTS
+
+- Week folder: [WEEK FOLDER]
+- Weekly lecture files: [LECTURE FILES]
+- Handwritten notes and worksheets: [OTHER WEEKLY FILES]
+- Textbook: [TEXTBOOK FILE]
+- Allowed textbook sections: [SPECIFIED SECTIONS ONLY]
+- Assigned or suggested textbook exercises: [EXERCISE NUMBERS]
+- Topics requiring extra emphasis: [PRIORITY TOPICS]
+
+GOAL
+
+Produce accurate, self-contained study materials that can replace the original sources during review. Cover all weekly material, but give the greatest depth to the priority topics. Keep reusable teaching detailed and individual exercise solutions concise.
+
+FINAL OUTPUT
+
+Create exactly two content files in the week folder:
+
+1. `Study-Notes.tex`
+2. `Answers-and-Practice.tex`
+
+Allowed supporting outputs:
+
+- `graphs/`
+- Figure-generation scripts inside `graphs/` or `scripts/`
+- Small data files used by those scripts
+
+Do not create or retain any other content `.tex` file. In particular, do not create separate Weekly Questions, Textbook Practice, Self-Test, README, or Coverage Audit files.
+
+Do not retain compiled PDFs or LaTeX build files in the week folder, including `.aux`, `.log`, `.toc`, `.out`, `.fls`, `.fdb_latexmk`, and `.synctex.gz`.
+
+Both final `.tex` files must be standalone and directly compilable. Do not use `\input` or `\include` to split their content.
+
+1. TOKEN-EFFICIENT WORKFLOW
+
+Use two subagents because the sources have separate scopes, but minimize duplicated context and output.
+
+- Start each subagent with no inherited conversation history when the environment supports it. Give it only its source paths, scope, required output schema, and mathematical priorities.
+- Subagent 1 reviews every weekly lecture, handwritten, and worksheet page.
+- Subagent 2 reviews only the allowed textbook sections and listed exercises.
+- Each subagent writes one compact structured report to a temporary file. It must not return a long page-by-page narrative in chat.
+- Each report should contain only: topics, definitions, complete source questions, required data or figures, answers, corrections, page references, and unresolved items.
+- Return to the main agent only a short completion message and the temporary report path.
+- Do not paste full PDF text extraction into chat or tool output.
+- Extract only the pages required by the stated scope.
+- Detect repeated or duplicate pages and reuse the first verified reading instead of analyzing identical content repeatedly.
+- Batch independent page extraction and rendering operations.
+- Keep command and compilation output quiet. Read only relevant error lines when a command fails.
+- Do not narrate routine progress or repeat findings already stored in a report.
+
+2. SOURCE REVIEW
+
+Visually inspect every page of every weekly file. Check printed text, handwriting, annotations, tables, graphs, diagrams, worked examples, unanswered questions, instructor comments, review material, supplementary material, and preview material.
+
+For the textbook, inspect only:
+
+- The allowed textbook sections
+- The pages containing the listed exercises
+- Any source figures or tables needed by those exercises
+
+Do not read or summarize textbook sections outside the stated boundary.
+
+Do not guess unreadable or ambiguous material. Record it once in the coverage appendix of `Answers-and-Practice.tex`.
+
+Do not reproduce a page-by-page audit in the notes. Use page references only where they identify a source question, correction, or unresolved item.
+
+3. CONTENT ORGANIZATION
+
+Organize by mathematical concept rather than source order.
+
+Label material as:
+
+- Core material
+- Supplementary material
+- Preview material
+
+Include every distinct weekly topic, but avoid explaining the same concept more than once. Later exercises should refer back to the relevant Problem Type ID.
+
+Give priority topics:
+
+- More complete explanations
+- More useful representations
+- More representative practice
+- Clearer common-error guidance
+
+4. FILE 1: `Study-Notes.tex`
+
+This is the main teaching file. It must contain:
+
+- Definitions and notation
+- Meaning and intuition
+- Conditions and domain restrictions
+- Recognition cues
+- General methods
+- Required tables, graphs, and diagrams
+- Core, supplementary, and preview labels
+- Every Problem Type section
+- A complete teaching-example question for every Problem Type
+- A checklist of what a complete answer must contain
+- Common mistakes
+
+Do not include the worked solution or final answer to a Problem Type teaching example in this file.
+
+Assign stable IDs in order: `PT-01`, `PT-02`, and so on.
+
+Use this structure:
+
+\subsection{Problem Type PT-XX: [Name]}
+
+\textbf{Meaning and recognition.} [Concise explanation.]
+
+\textbf{General method.} [Reusable steps.]
+
+\textbf{Teaching example.}
+
+\textbf{Question.} [Complete question with all variables, units, conditions, and subparts.]
+
+[Required table, graph, or diagram.]
+
+\textbf{A complete answer must include.} [Checklist without revealing the result.]
+
+\textbf{Common mistakes.} [Concise list.]
+
+5. FILE 2: `Answers-and-Practice.tex`
+
+Use this order:
+
+A. Problem Type solutions
+B. Actual weekly questions and solutions
+C. Assigned or suggested textbook exercises and solutions
+D. Original self-test questions
+E. Self-test answers
+F. Compact coverage and unresolved-items appendix
+
+For every Problem Type in File 1, include exactly one matching section:
+
+\subsection{Problem Type PT-XX: [Same Name]}
+
+\textbf{Question reference.} See PT-XX in `Study-Notes.tex`.
+
+\textbf{Worked solution.} [Clear reasoning and calculations.]
+
+\textbf{Answer.} [Complete final answer with units and interpretation when relevant.]
+
+Do not repeat the full general method here.
+
+6. ACTUAL SOURCE QUESTIONS
+
+Include every actual weekly question and every listed textbook exercise in `Answers-and-Practice.tex`.
+
+For each source question, preserve:
+
+- Exact source label: filename and page, or textbook section and exercise number
+- Complete wording
+- Every subpart
+- Variable definitions
+- Required table, graph, or diagram
+- Relevant Problem Type ID
+- Necessary work
+- Final answer
+
+Use this structure:
+
+\subsection{[Source and question or exercise number]}
+
+\textbf{Question.} [Complete wording and every subpart.]
+
+[Required data or figure.]
+
+\textbf{Relevant method.} PT-XX: [Name].
+
+\textbf{Necessary work.} [Only the work needed to justify the answer.]
+
+\textbf{Answer.} [Complete final answer.]
+
+For multipart questions, label the work and answer for each part separately.
+
+Do not repeat tutorials, recognition guides, answer checklists, or common-mistake lists under individual exercises.
+
+Clearly distinguish:
+
+- Original teaching examples
+- Actual weekly questions
+- Actual textbook questions
+
+Never present an original question as a source question.
+
+7. TABLES, GRAPHS, AND DIAGRAMS
+
+Include the actual representation needed to solve or understand each topic.
+
+For a table:
+
+- Reproduce the full relevant table
+- Label row and column variables and units
+- Define what entries mean
+- In the relevant solution, show at least one exact lookup
+- State which variable is fixed when reading across or down
+- Explain interpolation assumptions when used
+
+For a graph or diagram:
+
+- Label axes, variables, units, key points, curves, and surfaces
+- State fixed and free variables
+- Identify the geometric object
+- Describe orientation, symmetry, reference points, and extent
+- State when a finite drawing is only a viewing window of an infinite object
+
+For a contour map:
+
+- Show contour values and relevant locations
+- Give a justified range before estimating
+- State interpolation assumptions
+- Compare spacing only when contour-value intervals are comparable
+
+8. GRAPH FILES AND SCRIPTS
+
+Supporting graphs and scripts are allowed.
+
+- Retain only graphs referenced by one of the two `.tex` files.
+- Retain only scripts that generate retained graphs or provide clear reproducibility.
+- Use stable relative paths such as `graphs/name.png`.
+- Avoid duplicate figures when one labelled figure can support several sections.
+- Prefer one reusable graph-generation script over many small scripts.
+- Preserve exact source diagrams when an exercise depends on visual data.
+- Visually inspect every retained figure.
+- Do not keep contact sheets, page renders, source-page screenshots used only for QA, or temporary image files in the week folder.
+
+9. ORIGINAL SELF-TEST
+
+Place the self-test in `Answers-and-Practice.tex` after the source exercises.
+
+Use approximately one original question per major Problem Type, combining related skills when reasonable. Cover:
+
+- Concepts
+- Algebra and numerical work
+- Tables
+- Graph interpretation or sketching
+- Core material
+- At least one supplementary or preview topic when present
+
+Put all self-test questions first, then all answers. Include required data and figures. Reference the relevant Problem Type IDs in the answer section.
+
+Do not copy assigned textbook exercises.
+
+10. LATEX REQUIREMENTS
+
+Use portable LaTeX compatible with `pdflatex` unless another engine is requested.
+
+Each file must have its own complete preamble. Use standard packages such as `amsmath`, `amssymb`, `booktabs`, `array`, `graphicx`, and `hyperref` as needed.
+
+Requirements:
+
+- No absolute paths
+- No shell-escape-dependent packages
+- Consistent margins, typography, headings, headers, and page numbering
+- Legible figures and tables
+- Correctly escaped special characters
+- Stable section labels when useful
+- No external content `.tex` dependency
+
+11. COMPACT COVERAGE AUDIT
+
+Before finishing, internally check:
+
+- Every weekly page
+- Every handwritten page
+- Every actual weekly question
+- Every required source table and diagram
+- Every allowed textbook page
+- Every listed textbook exercise
+- Every Problem Type question and matching answer
+- Every retained graph
+
+Put only a compact appendix in `Answers-and-Practice.tex` containing:
+
+- Source file or page range
+- Topic or question covered
+- Corresponding section or Problem Type ID
+- Unreadable, ambiguous, or missing items
+
+Do not repeat source content in the audit and do not create a separate audit file.
+
+12. VERIFICATION WITHOUT RETAINED BUILD FILES
+
+Compile both `.tex` files in a temporary directory outside the week folder. Keep compilation output quiet unless an error occurs.
+
+Verification steps:
+
+1. Compile once.
+2. Read only error lines if compilation fails, fix them, and retry.
+3. Compile one final time to resolve references.
+4. Render temporary PDFs to contact sheets.
+5. Inspect all pages using the contact sheets.
+6. Open individual pages only when the contact sheet shows a possible problem.
+7. Verify mathematical accuracy, links, graph paths, labels, units, and legibility.
+8. Delete all temporary PDFs, renders, logs, and build files.
+
+Do not copy the temporary PDFs into the week folder.
+
+13. FINAL CHECK
+
+Before reporting completion, confirm:
+
+- Exactly two final content `.tex` files exist: `Study-Notes.tex` and `Answers-and-Practice.tex`.
+- Every Problem Type ID in File 1 has exactly one matching solution in File 2.
+- Every listed source exercise is present with complete wording and an answer.
+- Reusable instruction appears once, in `Study-Notes.tex`.
+- Exercise solutions are concise.
+- All retained graphs are referenced.
+- No compiled PDF or LaTeX build artifact remains in the week folder.
+- Textbook coverage stays within the allowed sections.
+
+In the final response, report only:
+
+- The two `.tex` files
+- Retained graph or script directories
+- Number of Problem Types
+- Number of weekly and textbook exercises
+- Any unresolved source gaps
+- Confirmation that temporary build files were deleted

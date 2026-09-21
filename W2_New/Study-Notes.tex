@@ -1,0 +1,992 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=0.82in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,mathtools,booktabs,longtable,array,graphicx,microtype,xcolor,enumitem,fancyhdr,hyperref}
+\usepackage[most]{tcolorbox}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!55!black,
+    urlcolor=blue!55!black,
+    pdftitle={MAT235 Week 2 Study Notes: Graphs, Cross-Sections, and Contours}
+}
+
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{MAT235 --- Week 2 Study Notes}
+\rhead{12.2 Graphs \& Surfaces \quad 12.3 Contours}
+\cfoot{\thepage}
+
+\setcounter{tocdepth}{2}
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+
+\newtcolorbox{statusbox}[1]{
+    colback=blue!4,
+    colframe=blue!45!black,
+    title=#1,
+    fonttitle=\bfseries,
+    breakable
+}
+
+\newcommand{\fig}[2]{\begin{center}\includegraphics[width=#1\linewidth]{graphs/#2}\end{center}}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+
+\begin{titlepage}
+\centering
+\vspace*{1.2in}
+{\Huge\bfseries MAT235 Week 2 Study Notes\\[12pt] Graphs, Traces, and Contour Diagrams\par}
+\vspace{18pt}
+{\LARGE Section 12.2: Graphs and Surfaces\\Section 12.3: Contour Diagrams\par}
+\vspace{22pt}
+{\large Comprehensive English Theory, Reusable Methods, and Problem Type Catalog\par}
+\vfill
+{\large Based on Course Lectures, Scanned Notes, Worksheets, and 8th-Edition Textbook\par}
+\vspace{10pt}
+{\small Note: All worked solutions, textbook practice, weekly questions, and self-tests are in \texttt{Answers-and-Practice.tex}.\par}
+\end{titlepage}
+
+\hypersetup{pageanchor=true}
+\pagenumbering{roman}
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+\section*{How to use this file}
+\addcontentsline{toc}{section}{How to use this file}
+This document serves as the primary conceptual and methodological guide for Week 2 of MAT235. It synthesizes all core material from Sections 12.2 and 12.3 of the textbook, supplementary review and extensions from handwritten lecture notes, and preview material found in weekly lecture presentations.
+
+Each distinct mathematical skill is organized into a standardized \textbf{Problem Type (PT-01 through PT-15)}. For every Problem Type, this file provides:
+\begin{itemize}[leftmargin=*,nosep]
+    \item \textbf{Meaning and recognition:} Conceptual foundation, physical/geometric intuition, and identification cues.
+    \item \textbf{General method:} Systematic, reusable algorithmic steps.
+    \item \textbf{Teaching example question:} A complete problem statement with explicit conditions and subparts.
+    \item \textbf{A complete answer must include:} An actionable checklist of required components without spoiling the final answer.
+    \item \textbf{Common mistakes:} Typical pitfalls, sign errors, and conceptual confusions to avoid.
+\end{itemize}
+
+Per course instructions, \textbf{worked solutions and answers to all Problem Types are located exclusively in \texttt{Answers-and-Practice.tex}} to facilitate active learning. All drawings depicting 3D surfaces illustrate finite viewing windows of typically unbounded objects unless an explicit domain restriction is specified.
+
+\clearpage
+
+% =========================================================================
+% SECTION 1: CORE 12.2 GRAPHS AND SURFACES
+% =========================================================================
+\section{Core: 12.2 Graphs and Surfaces}\label{sec:graphs-surfaces}
+\begin{statusbox}{Status: Core material}
+\textbf{Learning Targets:} Define functions of two variables and their graphs in $\R^3$; apply the vertical-line test for surfaces; recognize standard quadric surfaces (planes, spheres, paraboloids, saddles); identify domain constraints.
+\end{statusbox}
+
+\subsection{Definitions and Notation}
+A real-valued function of two real variables is a rule $f: D \subseteq \R^2 \to \R$ that assigns to each ordered pair $(x,y)$ in the domain $D$ exactly one real number $z = f(x,y)$.
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Domain ($D$):} The subset of $\R^2$ on which the formula $f(x,y)$ is mathematically defined and real-valued. If no domain is explicitly stated, the natural domain is the largest subset of $\R^2$ where the expression is well-defined.
+    \item \textbf{Graph ($G_f$):} The set of all points $(x,y,z)$ in three-dimensional space $\R^3$ such that $(x,y) \in D$ and $z = f(x,y)$:
+    \[ G_f = \{(x,y,z) \in \R^3 : (x,y) \in D,\ z = f(x,y)\}. \]
+    \item \textbf{Ambient Space:} The graph lies in $\R^3$ with standard Cartesian coordinates $(x,y,z)$. The $xy$-plane represents the horizontal domain plane, while the $z$-axis represents the vertical output height.
+\end{itemize}
+
+\subsection{Geometric Meaning and the Vertical-Line Test}
+Geometrically, the graph of a continuous function $z = f(x,y)$ represents a two-dimensional surface in $\R^3$. Because $f$ is a function, each input pair $(x_0,y_0) \in D$ generates exactly one height $z_0 = f(x_0,y_0)$. 
+
+\textbf{The Vertical-Line Test for Surfaces:} 
+A surface $S \subset \R^3$ is the graph of a single-valued function $z = f(x,y)$ if and only if every vertical line parallel to the $z$-axis (given by parametric equations $x = x_0$, $y = y_0$, $z \in \R$) intersects the surface $S$ at \emph{at most one point}.
+\begin{itemize}[leftmargin=*,nosep]
+    \item If a vertical line intersects $S$ at two or more distinct points, $S$ cannot be represented by a single function $z = f(x,y)$.
+    \item For example, the sphere $x^2+y^2+z^2 = r^2$ contains $(0,0,r)$ and $(0,0,-r)$; the vertical line $x=0, y=0$ intersects it twice. Thus, the full sphere is not the graph of a single function. It must be decomposed into upper and lower hemispheres: $z = +\sqrt{r^2-x^2-y^2}$ and $z = -\sqrt{r^2-x^2-y^2}$.
+\end{itemize}
+
+\fig{.92}{01-surfaces.png}
+
+% -------------------------------------------------------------------------
+% PROBLEM TYPE PT-01
+% -------------------------------------------------------------------------
+\subsection{Problem Type PT-01: Recognize and Describe a Surface from an Equation}\label{pt:01}
+
+\textbf{Meaning and recognition.} 
+A description problem asks for the geometric identity, key features, orientation, and spatial extent of a surface defined by an equation in $x,y,z$. Recognition relies on equation structure:
+\begin{itemize}[leftmargin=*,nosep]
+    \item Linear equation $Ax + By + Cz = D$: plane.
+    \item Quadratic sum $x^2 + y^2 + z^2 = r^2$: sphere of radius $r$ centered at the origin.
+    \item Explicit square sum $z = \frac{x^2}{a^2} + \frac{y^2}{b^2}$: elliptic/circular paraboloid opening along the positive $z$-axis.
+    \item Explicit difference of squares $z = \frac{x^2}{a^2} - \frac{y^2}{b^2}$: hyperbolic paraboloid (saddle).
+    \item Missing coordinate (e.g., $z = x^2$ or $x^2+y^2=r^2$): cylinder extruded parallel to the missing coordinate's axis.
+\end{itemize}
+
+\textbf{General method.}
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Identify the surface type:} Classify the algebraic degree and match with standard quadric or planar forms.
+    \item \textbf{Determine key geometric landmarks:} Calculate coordinate axis intercepts (set two variables to 0) and identify vertices, centers, or radii.
+    \item \textbf{Compute primary coordinate traces:} Set $x=0$, $y=0$, and $z=0$ to determine cross-sections in the coordinate planes.
+    \item \textbf{Evaluate the vertical-line test:} Determine whether solving for $z$ yields a unique value for each $(x,y)$.
+    \item \textbf{Describe orientation and extent:} State whether the surface is bounded (finite) or extends infinitely, and specify the direction of growth or opening.
+\end{enumerate}
+
+\textbf{Teaching example.}
+
+\textbf{Question.} 
+Describe the geometric surfaces in $\R^3$ defined by the equations (a) $z = 1 + x - y$ and (b) $x^2 + y^2 + z^2 = 4$. For each surface:
+\begin{enumerate}[label=(\roman*),nosep]
+    \item Identify the specific geometric object.
+    \item Determine all coordinate axis intercepts and primary traces in the coordinate planes.
+    \item State whether the entire surface is the graph of a single-valued function $z = f(x,y)$, and explain why.
+    \item Describe the orientation, unbounded or bounded nature, and spatial extent.
+\end{enumerate}
+
+\textbf{A complete answer must include.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Explicit classification of each equation into its geometric category.
+    \item Exact coordinates for the $x$-, $y$-, and $z$-intercepts where they exist.
+    \item The explicit equations and containing planes for the coordinate traces ($x=0$, $y=0$, $z=0$).
+    \item A clear verdict on whether each surface satisfies the vertical-line test, supported by an explicit algebraic or geometric justification.
+    \item A precise statement of whether the surface is bounded or infinite, and its domain in $\R^2$.
+\end{itemize}
+
+\textbf{Common mistakes.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Confusing the bounded triangular drawing in a first-octant sketch with a finite physical boundary (planes are infinite).
+    \item Claiming the sphere is a function $z = f(x,y)$ by discarding the negative square root branch.
+    \item Omitting the containing plane equation when stating a trace (e.g., writing $z = 1+x$ instead of $z = 1+x$ in the plane $y=0$).
+\end{itemize}
+
+% -------------------------------------------------------------------------
+% PROBLEM TYPE PT-02
+% -------------------------------------------------------------------------
+\subsection{Problem Type PT-02: Test a Surface as a Function $z=f(x,y)$ and Determine Exact Domain}\label{pt:02}
+
+\textbf{Meaning and recognition.} 
+Given an implicit relation $F(x,y,z) = 0$, one must determine if it can be solved globally as $z = f(x,y)$. When an equation contains $z^2$ (or higher even powers), solving for $z$ generates multiple branches $\pm \sqrt{\dots}$. Each branch represents a function, but only over its legitimate real domain.
+
+\textbf{General method.}
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Isolate $z$ algebraically:} Solve $F(x,y,z) = 0$ for $z$.
+    \item \textbf{Identify multiple outputs:} If $z = \pm \sqrt{g(x,y)}$, exhibit an input $(x_0,y_0)$ yielding two distinct real values $z_1 \ne z_2$, confirming failure of the vertical-line test.
+    \item \textbf{Decompose into single-valued branches:} Split the surface into top/bottom or positive/negative function branches: $z_{\text{top}} = +\sqrt{g(x,y)}$ and $z_{\text{bottom}} = -\sqrt{g(x,y)}$.
+    \item \textbf{Determine the natural domain:} Enforce the real-radicand condition $g(x,y) \ge 0$ and any denominator restrictions. Express the domain using exact set-builder notation.
+\end{enumerate}
+
+\fig{.88}{02-sphere-cylinder.png}
+
+\textbf{Teaching example.}
+
+\textbf{Question.} 
+Consider the unit sphere $x^2 + y^2 + z^2 = 1$ in $\R^3$.
+\begin{enumerate}[label=(\alph*),nosep]
+    \item Show that the entire sphere is not the graph of a single function $z = f(x,y)$ by applying the vertical-line test at an explicit point.
+    \item Decompose the sphere into two separate function graphs $z = f_1(x,y)$ and $z = f_2(x,y)$.
+    \item State the exact natural domain $D$ for these functions using formal set notation, and explain why specifying $[-1,1] \times [-1,1]$ is incorrect.
+\end{enumerate}
+
+\textbf{A complete answer must include.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item An explicit vertical line exhibiting two distinct intersection points on the sphere.
+    \item The algebraic formulas for the upper and lower hemispheres with explicit signs.
+    \item The set definition $D = \{(x,y) \in \R^2 : x^2+y^2 \le 1\}$.
+    \item A clear geometric explanation of why the rectangular bounding box $[-1,1]^2$ contains invalid points outside the disk where the radicand becomes negative.
+\end{itemize}
+
+\textbf{Common mistakes.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Stating the domain as $-1 \le x \le 1$ and $-1 \le y \le 1$ (the unit square has points like $(1,1)$ where $1 - x^2 - y^2 = -1 < 0$).
+    \item Forgetting to state the boundary condition $z=0$ where the two hemispheres meet.
+\end{itemize}
+
+% -------------------------------------------------------------------------
+% PROBLEM TYPE PT-03
+% -------------------------------------------------------------------------
+\subsection{Problem Type PT-03: Transform a Known Surface Graph via Shifts, Reflections, and Scaling}\label{pt:03}
+
+\textbf{Meaning and recognition.} 
+Recognizing how modifying the formula $z = f(x,y)$ alters its graph allows immediate visualization without point-by-point plotting:
+\begin{itemize}[leftmargin=*,nosep]
+    \item $z = f(x-a, y-b) + c$: Horizontal translation by $(a,b)$ in the $xy$-plane and vertical translation by $c$ along the $z$-axis.
+    \item $z = -f(x,y)$: Vertical reflection across the $xy$-plane ($z \mapsto -z$).
+    \item $z = c \cdot f(x,y)$ ($c>0$): Vertical stretching (if $c>1$) or compression (if $0<c<1$).
+    \item $z = f(-x, y)$ or $z = f(x, -y)$: Reflection across the $yz$-plane or $xz$-plane, respectively.
+\end{itemize}
+
+\fig{.95}{07-transformations.png}
+
+\textbf{General method.}
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Identify the base surface:} Locate the parent function (e.g., standard circular paraboloid $z = x^2+y^2$).
+    \item \textbf{Determine shift coordinates:} Identify $(a,b)$ from $(x-a)$ and $(y-b)$, and $c$ from constant terms.
+    \item \textbf{Identify reflections and scaling:} Check signs preceding variables or parenthesized groups.
+    \item \textbf{Track key landmark points:} Compute the new position of the vertex, peak, or saddle point.
+    \item \textbf{State symmetry, range, and asymptotic behavior:} Note circular symmetry around shifted axes or decay toward horizontal planes.
+\end{enumerate}
+
+\textbf{Teaching example.}
+
+\textbf{Question.} 
+Starting from the standard circular paraboloid $z = x^2 + y^2$, describe the geometric transformation, resulting surface, vertex coordinates, axis of symmetry, and range for each of the following:
+\begin{enumerate}[label=(\alph*),nosep]
+    \item $z = (x-1)^2 + (y-2)^2$
+    \item $z = 5 - x^2 - y^2$
+    \item $z = e^{-(x^2+y^2)}$
+\end{enumerate}
+
+\textbf{A complete answer must include.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Step-by-step description of each geometric operation (shift vector, reflection plane, vertical translation).
+    \item Exact 3D coordinates for the vertex or global maximum.
+    \item The vertical axis of symmetry (e.g., $x=a, y=b$).
+    \item The exact range of output heights $z$ for each surface.
+    \item Asymptotic behavior for part (c) as distance from the origin $r \to \infty$.
+\end{itemize}
+
+\textbf{Common mistakes.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Inverting shift signs (e.g., claiming $(x-1)^2$ translates by $-1$ instead of $+1$).
+    \item Claiming that $z = e^{-(x^2+y^2)}$ attains the value $z=0$ (it approaches $0$ asymptotically, but $z>0$ everywhere).
+    \item Confusing horizontal shifts in the input domain with vertical shifts in height.
+\end{itemize}
+
+\clearpage
+
+% =========================================================================
+% SECTION 2: CORE VERTICAL CROSS-SECTIONS
+% =========================================================================
+\section{Core: Vertical Cross-Sections (Traces)}\label{sec:cross-sections}
+\begin{statusbox}{Status: Core material}
+\textbf{Learning Targets:} Obtain vertical cross-sections by holding one input variable constant; plot cross-section families on specified 2D axes; infer 3D surface geometry from orthogonal trace families.
+\end{statusbox}
+
+\subsection{Definition and Geometric Meaning}
+A \textbf{vertical cross-section} (or vertical trace) of the surface $z = f(x,y)$ is the curve formed by intersecting the surface with a vertical plane:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Cross-section with $x$ held constant ($x = a$):} The intersection of the surface with the vertical plane $x = a$. Points on this curve satisfy
+    \[ x = a, \quad z = f(a,y). \]
+    This is a two-dimensional curve in the vertical plane $x = a$, plotted using horizontal coordinate $y$ and vertical coordinate $z$.
+    \item \textbf{Cross-section with $y$ held constant ($y = b$):} The intersection of the surface with the vertical plane $y = b$. Points on this curve satisfy
+    \[ y = b, \quad z = f(x,b). \]
+    This is a two-dimensional curve in the vertical plane $y = b$, plotted using horizontal coordinate $x$ and vertical coordinate $z$.
+\end{itemize}
+\textbf{Critical distinction:} The equation $z = f(x,b)$ alone does not fully define a spatial curve; the plane equation $y = b$ is an indispensable part of the mathematical specification.
+
+% -------------------------------------------------------------------------
+% PROBLEM TYPE PT-04
+% -------------------------------------------------------------------------
+\subsection{Problem Type PT-04: Determine and Sketch Parabolic and Hyperbolic Vertical Traces}\label{pt:04}
+
+\textbf{Meaning and recognition.} 
+When $f(x,y)$ involves quadratic terms ($x^2, y^2$), fixing one coordinate reduces the equation to a single-variable quadratic in the other coordinate. Analyzing how the vertex and opening direction change across the family reveals whether the surface is an elliptic bowl ($z = x^2+y^2$) or a hyperbolic saddle ($z = x^2-y^2$).
+
+\textbf{General method.}
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Fix the chosen variable:} Substitute $y = b$ (or $x = a$) into the surface equation $z = f(x,y)$.
+    \item \textbf{Formulate the 2D curve equation:} Write the resulting single-variable equation $z = g(x)$ (or $z = h(y)$).
+    \item \textbf{State the containing plane:} Explicitly pair the equation with its plane, e.g., $\{y = b,\ z = g(x)\}$.
+    \item \textbf{Identify conic/geometric features:} Determine vertex coordinates, concavity (upward vs downward), and axis intercepts in the designated plane.
+    \item \textbf{Synthesize the 3D surface:} Compare the behavior of orthogonal slices to identify the surface geometry.
+\end{enumerate}
+
+\textbf{Teaching example.}
+
+\textbf{Question.} 
+For the hyperbolic paraboloid $z = x^2 - y^2$:
+\begin{enumerate}[label=(\alph*),nosep]
+    \item Find the equations of the cross-sections in the planes $y = -1$, $y = 0$, and $y = 1$. Specify the shape, opening direction, and vertex coordinates of each curve in its vertical plane.
+    \item Find the equations of the cross-sections in the planes $x = -1$, $x = 0$, and $x = 1$. Specify the shape, opening direction, and vertex coordinates of each curve in its vertical plane.
+    \item Describe how these two orthogonal families of parabolas explain the saddle shape and behavior near the origin.
+\end{enumerate}
+
+\textbf{A complete answer must include.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Complete curve specifications including both the single-variable relation and the vertical plane condition.
+    \item Coordinates of the vertex in 3D space $(x,y,z)$ for each of the six requested cross-sections.
+    \item Explicit statement of concavity (upward along $x$, downward along $y$).
+    \item Synthesis explaining that the origin is a local minimum along the $x$-axis and a local maximum along the $y$-axis, forming a saddle point.
+\end{itemize}
+
+\textbf{Common mistakes.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Calling a 1D cross-section a ``paraboloid'' (a cross-section is a 2D \emph{parabola} residing in a plane).
+    \item Omitting the vertical plane equation and treating $z = x^2 - b^2$ as an equation in $\R^3$ (which would define a parabolic cylinder).
+\end{itemize}
+
+% -------------------------------------------------------------------------
+% PROBLEM TYPE PT-05
+% -------------------------------------------------------------------------
+\subsection{Problem Type PT-05: Sketch and Analyze Multi-Curve Families of Vertical Cross-Sections}\label{pt:05}
+
+\textbf{Meaning and recognition.} 
+Many functions exhibit distinct behavior depending on which input is held fixed. Plotting multiple cross-sections on a single set of 2D axes requires identifying the active independent variable and the parameter.
+\begin{itemize}[leftmargin=*,nosep]
+    \item When $x$ is held fixed ($x = a$), the horizontal axis must be $y$, and the vertical axis is $z$. Curves are parametrized by $a$.
+    \item When $y$ is held fixed ($y = b$), the horizontal axis must be $x$, and the vertical axis is $z$. Curves are parametrized by $b$.
+\end{itemize}
+
+\fig{.88}{03-cross-sections.png}
+
+\textbf{General method.}
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Identify fixed vs free variables:} Determine which variable is constant for each family.
+    \item \textbf{Derive algebraic family equations:} Substitute the constant values to obtain $z$ as a function of the free variable.
+    \item \textbf{Determine key curve landmarks:} For each curve, find axis intercepts, local extrema, inflection points, or slopes.
+    \item \textbf{Establish correct plotting axes:} Label horizontal and vertical axes properly ($y$ vs $z$ for fixed $x$; $x$ vs $z$ for fixed $y$).
+    \item \textbf{Interpret physical or geometric trends:} Track how the curve shifts, rotates, or deforms as the parameter increases.
+\end{enumerate}
+
+\textbf{Teaching example.}
+
+\textbf{Question.} 
+Consider the function $f(x,y) = y^3 + xy$.
+\begin{enumerate}[label=(\alph*),nosep]
+    \item Find the equations of the vertical cross-sections for $x = -1$, $x = 0$, and $x = 1$. Specify the plotting axes, and describe the shapes, roots, and turning points of the three curves.
+    \item Find the equations of the vertical cross-sections for $y = -1$, $y = 0$, and $y = 1$. Specify the plotting axes, and describe the geometric nature, slopes, and $z$-intercepts of the three curves.
+    \item Explain what happens to the slope of the $y$-fixed slices as $y$ increases from negative to positive values.
+\end{enumerate}
+
+\textbf{A complete answer must include.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Complete algebraic equations for all six cross-sections.
+    \item Explicit statement of axis assignments: horizontal $y$, vertical $z$ for family (a); horizontal $x$, vertical $z$ for family (b).
+    \item Analysis of cubic features for (a): roots, local maximum/minimum for $x=-1$, inflection points at $y=0$.
+    \item Analysis of linear features for (b): identifying each as a straight line with slope $m = y$ and intercept $z = y^3$.
+    \item Physical synthesis of how the surface twists as $y$ changes sign.
+\end{itemize}
+
+\textbf{Common mistakes.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Plotting the $x$-fixed family with $x$ on the horizontal axis.
+    \item Mistaking the linear family (for fixed $y$) for curved slices due to the presence of $y^3$.
+    \item Forgetting to indicate which curve corresponds to which parameter value on multi-curve plots.
+\end{itemize}
+
+\clearpage
+
+% =========================================================================
+% SECTION 3: CORE CYLINDERS AND FREE VARIABLES
+% =========================================================================
+\section{Core: Cylinders and Free Variables}\label{sec:cylinders}
+\begin{statusbox}{Status: Core material}
+\textbf{Learning Targets:} Recognize cylinders in $\R^3$ from missing variables; identify the generating curve and the axis of extrusion; distinguish between circular, parabolic, and hyperbolic cylinders; evaluate cylinders against the vertical-line test.
+\end{statusbox}
+
+\subsection{Definition and the Missing Variable Principle}
+In multivariable calculus, a \textbf{cylinder} is defined much more broadly than the familiar circular can of elementary geometry.
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Geometric Definition:} A cylinder is a surface in $\R^3$ generated by taking a plane curve $C$ (called the \emph{generating curve}) and translating it along a family of parallel lines (called \emph{rulings} or \emph{generators}) passing through every point of $C$.
+    \item \textbf{Missing Variable Rule:} If an equation in $\R^3$ involves only two of the three coordinate variables, the missing variable is \textbf{free} (completely unrestricted). The solution set consists of the 2D curve defined in the plane of the two present variables, extruded parallel to the axis of the missing variable.
+    \item \textbf{Orientation of Extrusion:}
+    \begin{itemize}[nosep]
+        \item Equation $F(x,y) = 0$ (missing $z$): extruded parallel to the $z$-axis.
+        \item Equation $F(x,z) = 0$ (missing $y$): extruded parallel to the $y$-axis.
+        \item Equation $F(y,z) = 0$ (missing $x$): extruded parallel to the $x$-axis.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Cylinders vs Functions $z=f(x,y)$}
+A cylinder may or may not represent the graph of a function $z = f(x,y)$:
+\begin{itemize}[leftmargin=*,nosep]
+    \item The parabolic cylinder $z = x^2$ has $y$ free. For any $(x,y)$, $z$ is uniquely determined by $x^2$. Thus, $z = x^2$ \textbf{is} the graph of a valid function $z = f(x,y)$ (independent of $y$).
+    \item The circular cylinder $x^2 + y^2 = 1$ has $z$ free. For any interior input pair $(x,y)$ with $x^2+y^2=1$, $z$ can take \emph{any} real value. Thus, vertical lines intersect it at infinitely many points, completely failing the vertical-line test. It \textbf{cannot} be written as $z = f(x,y)$.
+    \item The parabolic cylinder $y = x^2$ has $z$ free, and likewise fails the vertical-line test for $z=f(x,y)$.
+\end{itemize}
+
+% -------------------------------------------------------------------------
+% PROBLEM TYPE PT-06
+% -------------------------------------------------------------------------
+\subsection{Problem Type PT-06: Identify and Sketch Cylinders from Missing Variables in $\R^3$}\label{pt:06}
+
+\textbf{Meaning and recognition.} 
+When presented with an equation containing fewer than three variables in an ambient three-dimensional context, immediately recognize that the missing variable generates an extrusion parallel to its axis.
+
+\textbf{General method.}
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Identify the missing variable:} Determine which coordinate is absent from the equation.
+    \item \textbf{Analyze the 2D generating trace:} Set the missing variable to 0 (or view in its coordinate plane) and identify the curve (circle, parabola, ellipse, hyperbola, line).
+    \item \textbf{Determine the extrusion direction:} The surface is formed by translating the generating curve parallel to the axis of the missing coordinate.
+    \item \textbf{Test as a function $z=f(x,y)$:} Check if solving for $z$ yields a single unique output for each $(x,y)$. If $z$ is the missing variable, the surface fails the function test immediately.
+    \item \textbf{Describe extent:} Unless a domain bound is specified, the cylinder extends infinitely along its extrusion axis and along any unbounded directions of the generating curve.
+\end{enumerate}
+
+\textbf{Teaching example.}
+
+\textbf{Question.} 
+\begin{enumerate}[label=(\alph*),nosep]
+    \item Describe the geometric meaning of the equation $x^2 + y^2 = 1$ in two-dimensional space $\R^2$ versus three-dimensional space $\R^3$.
+    \item Describe the surface defined by $z = x^2$ in $\R^3$, specifying its generating curve, extrusion direction, and whether it represents a function $z = f(x,y)$.
+    \item Describe the surface defined by $y = x^2$ in $\R^3$, specifying its generating curve, extrusion direction, and whether it represents a function $z = f(x,y)$.
+\end{enumerate}
+
+\textbf{A complete answer must include.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Contrast between 1D curve in $\R^2$ and 2D cylindrical surface in $\R^3$.
+    \item Identification of the generating cross-section in its respective coordinate plane.
+    \item Explicit name of the axis of extrusion for each surface.
+    \item Rigorous vertical-line test assessment for all three cases.
+    \item Clear statement of spatial extent for each surface.
+\end{itemize}
+
+\textbf{Common mistakes.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Assuming that ``cylinder'' exclusively means a circular cylinder.
+    \item Assuming that all cylinders fail to be functions $z=f(x,y)$ (failing to recognize that $z=x^2$ is a valid function).
+    \item Misidentifying the axis of extrusion (e.g., claiming $y = x^2$ extrudes along $y$).
+\end{itemize}
+
+\subsection{Supplementary Trace Example: Hemisphere Slice}\label{sec:hemi-slice}
+In lecture notes (\texttt{MAT235H-5201-Sept-16.pdf}, p.~17), the upper unit hemisphere $z = \sqrt{1-x^2-y^2}$ is sliced at $x = 1/2$.
+Setting $x = 1/2$ yields:
+\[ z = \sqrt{1 - (1/2)^2 - y^2} = \sqrt{3/4 - y^2}, \quad \text{for } |y| \le \frac{\sqrt{3}}{2}. \]
+In the vertical plane $x = 1/2$, this curve is the upper semicircle $y^2 + z^2 = 3/4$ with $z \ge 0$, having radius $r = \frac{\sqrt{3}}{2}$. It is neither a parabola nor a full circle.
+
+\fig{.85}{11-hemisphere-slice.png}
+
+\clearpage
+
+% =========================================================================
+% SECTION 4: CORE 12.3 CONTOURS AND LEVEL CURVES
+% =========================================================================
+\section{Core: 12.3 Contours and Level Curves}\label{sec:contours}
+\begin{statusbox}{Status: Core material}
+\textbf{Learning Targets:} Define level sets and contours; distinguish contours from vertical cross-sections; calculate algebraic contours; interpret contour spacing and steepness; read and interpolate contour maps; construct contours from data tables.
+\end{statusbox}
+
+\subsection{Definitions and Notation}
+For a function $f: D \subseteq \R^2 \to \R$ and a real constant $c$, the \textbf{level set} (or \textbf{contour curve}) of height $c$ is the set of all input points $(x,y)$ in the domain where the function output equals $c$:
+\[ L_c = \{(x,y) \in D : f(x,y) = c\}. \]
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Geometric Meaning:} A contour is the horizontal slice of the 3D graph $z = f(x,y)$ formed by intersecting it with the horizontal plane $z = c$, projected vertically downward into the $xy$-domain plane.
+    \item \textbf{Contour Diagram (Contour Map):} A collection of several contour lines drawn in the single $xy$-plane, where each curve is clearly labelled with its corresponding output value $c$.
+    \item \textbf{The Non-Intersecting Rule:} For a single-valued function $f$, contours corresponding to \emph{different} values $c_1 \ne c_2$ can \textbf{never intersect}. If they intersected at $(x_0,y_0)$, the function would evaluate to both $c_1$ and $c_2$ simultaneously, violating the definition of a function. (However, different branches of the \emph{same} level set can cross, such as at a saddle point where $f(x,y)=0$).
+\end{itemize}
+
+% -------------------------------------------------------------------------
+% PROBLEM TYPE PT-07
+% -------------------------------------------------------------------------
+\subsection{Problem Type PT-07: Distinguish Vertical Cross-Sections from Horizontal Level Curves}\label{pt:07}
+
+\textbf{Meaning and recognition.} 
+Students often confuse vertical cross-sections (traces) with horizontal level curves (contours). They represent orthogonal slicing directions:
+\begin{itemize}[leftmargin=*,nosep]
+    \item A \textbf{cross-section} fixes an \emph{input} coordinate ($x=a$ or $y=b$), keeps output $z$ variable, and lives in a vertical plane in 3D space.
+    \item A \textbf{contour} fixes the \emph{output} height ($z=c$), allows inputs $(x,y)$ to vary along the curve, and is projected into the 2D domain ($xy$-plane).
+\end{itemize}
+
+\textbf{General method.}
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Identify the held quantity:} Check whether the constraint fixes an input ($x$ or $y$) or the output ($z$).
+    \item \textbf{Specify the 3D containing plane:} Vertical plane $x=a$ or $y=b$ for cross-sections; horizontal plane $z=c$ for level sets.
+    \item \textbf{Identify the viewing projection:} $yz$-view or $xz$-view for cross-sections; $xy$-view for contour maps.
+    \item \textbf{State the output behavior:} Along a cross-section, $z$ varies; along a contour, $z$ is strictly constant.
+\end{enumerate}
+
+\textbf{Teaching example.}
+
+\textbf{Question.} 
+For the paraboloid $f(x,y) = x^2 + y^2$:
+\begin{enumerate}[label=(\alph*),nosep]
+    \item Find the equation and describe the geometry of the cross-section corresponding to $x = 1$. Specify its containing plane and whether it is viewed in $xz$, $yz$, or $xy$ coordinates.
+    \item Find the equation and describe the geometry of the contour corresponding to $z = 4$. Specify its containing plane and its representation in the $xy$-plane.
+    \item State two fundamental mathematical differences between a vertical cross-section and a contour.
+\end{enumerate}
+
+\textbf{A complete answer must include.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Explicit 3D point-set equations for both curves.
+    \item Geometric classification (parabola vs circle).
+    \item The exact containing planes ($x=1$ vs $z=4$) and projection planes ($yz$ vs $xy$).
+    \item Clear comparison of fixed variables, varying quantities, and display conventions.
+\end{itemize}
+
+\textbf{Common mistakes.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Calling $x^2+y^2=4$ a ``cross-section'' without specifying that it is a horizontal cross-section.
+    \item Drawing a contour on a graph with $z$ on one of the axes.
+\end{itemize}
+
+% -------------------------------------------------------------------------
+% PROBLEM TYPE PT-08
+% -------------------------------------------------------------------------
+\subsection{Problem Type PT-08: Find Algebraic Contours and Interpret Spacing and Steepness}\label{pt:08}
+
+\textbf{Meaning and recognition.} 
+Given a formula $z = f(x,y)$, setting $f(x,y) = c$ produces algebraic curves. When contours are plotted for \textbf{equal increments of the output} $\Delta c$, the horizontal spacing between successive contour lines reveals the steepness of the surface:
+\begin{itemize}[leftmargin=*,nosep]
+    \item \textbf{Closely spaced contours:} Rapid change in height over short horizontal distance $\implies$ \textbf{steep surface}.
+    \item \textbf{Widely spaced contours:} Gradual change in height over large horizontal distance $\implies$ \textbf{gentle/flat slope}.
+    \item \textbf{Equally spaced contours:} Constant slope (e.g., a cone $z = r$ or a plane $z = ax+by$).
+\end{itemize}
+\textbf{Crucial condition:} Comparing spacing is valid \emph{only} when the contour interval $\Delta c$ between adjacent curves is strictly constant!
+
+\fig{.90}{04-radial-contours.png}
+
+\textbf{General method.}
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Set $f(x,y) = c$:} Solve for standard 2D relations (circles, ellipses, lines, hyperbolas).
+    \item \textbf{Determine permissible values of $c$:} Identify constraints (e.g., radicands non-negative, squares non-negative). State when levels are empty or degenerate points.
+    \item \textbf{Express geometric dimensions in terms of $c$:} For radial functions, write radius $r(c)$ as a function of $c$.
+    \item \textbf{Analyze spacing for equal $\Delta c$:} Compute $\Delta r = r(c+\Delta c) - r(c)$ to determine if gaps widen, shrink, or remain constant.
+    \item \textbf{Relate to 3D surface shape:} Deduce whether the surface steepens, flattens, or has constant slope outward.
+\end{enumerate}
+
+\textbf{Teaching example.}
+
+\textbf{Question.} 
+Consider the functions $f(x,y) = x^2 + y^2$ and $g(x,y) = \sqrt{x^2 + y^2}$.
+\begin{enumerate}[label=(\alph*),nosep]
+    \item For $f(x,y)$, determine the permissible values of $c$, find the contour equations for $c = 0, 2, 4, 6, 8$, and compute the exact radius of each contour.
+    \item For $g(x,y)$, determine the permissible values of $c$, find the contour equations for $c = 0, 1, 2, 3$, and compute the exact radius of each contour.
+    \item Compare the radial spacing between successive contours for equal increments of $c$ in both functions, and explain what this reveals about the steepness and profile of the paraboloid versus the cone.
+\end{enumerate}
+
+\textbf{A complete answer must include.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Exact radius formulas: $r = \sqrt{c}$ for $f$; $r = c$ for $g$.
+    \item Explicit numerical/symbolic radii for all specified levels.
+    \item Identification of $c=0$ as a single degenerate point $(0,0)$ and $c<0$ as empty sets.
+    \item Mathematical comparison of $\Delta r$: for $f$, $\Delta r$ decreases outward as $c$ increases, proving the paraboloid steepens; for $g$, $\Delta r$ is strictly constant, proving the cone has constant slope.
+\end{itemize}
+
+\textbf{Common mistakes.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Mistaking the radius of $x^2+y^2=c$ for $c$ instead of $\sqrt{c}$.
+    \item Drawing a circle of positive radius for $c=0$.
+    \item Comparing contour spacing without confirming that the label increments $\Delta c$ are identical.
+\end{itemize}
+
+% -------------------------------------------------------------------------
+% PROBLEM TYPE PT-09
+% -------------------------------------------------------------------------
+\subsection{Problem Type PT-09: Plot and Interpret Contours of Linear Functions}\label{pt:09}
+
+\textbf{Meaning and recognition.} 
+A linear function of two variables has the general form $f(x,y) = ax + by + d$. Its level curves $ax + by + d = c$ are \textbf{parallel straight lines}.
+\begin{itemize}[leftmargin=*,nosep]
+    \item \textbf{Slope of Contours:} If $b \ne 0$, rewriting as $y = -\frac{a}{b}x + \frac{c-d}{b}$ shows all contours have identical slope $m = -a/b$.
+    \item \textbf{Direction of Increase:} The function increases most rapidly in the direction of the vector $(a,b)$ (perpendicular to the contour lines). Moving parallel to the contour lines produces zero change in $f$.
+    \item \textbf{Equal Spacing:} For equal steps $\Delta c$, the perpendicular distance between adjacent contour lines is constant: $D = \frac{|\Delta c|}{\sqrt{a^2+b^2}}$.
+\end{itemize}
+
+\fig{.90}{05-plane-saddle-contours.png}
+
+\textbf{General method.}
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Set $ax + by + d = c$:} Solve for $y$ in slope-intercept form $y = mx + k(c)$, or for $x$ if $b=0$.
+    \item \textbf{Calculate specific lines:} Compute intercepts for each requested value of $c$.
+    \item \textbf{Determine spacing:} Calculate the perpendicular separation between parallel lines.
+    \item \textbf{Identify the direction of increasing $z$:} Evaluate the gradient vector $(a,b)$ or test point values to determine which side of a line has higher values.
+    \item \textbf{Draw and label:} Plot the parallel lines on $xy$-axes with clear numerical labels and an arrow indicating uphill direction.
+\end{enumerate}
+
+\textbf{Teaching example.}
+
+\textbf{Question.} 
+Consider the linear function $z = 2y - x$.
+\begin{enumerate}[label=(\alph*),nosep]
+    \item Write the algebraic equations in slope-intercept form for the contours corresponding to $z = 0, 2, 4, 6$.
+    \item State the common slope of these lines and find the $y$-intercept for each contour.
+    \item Determine a vector in the $xy$-plane pointing in the direction of increasing $z$, and verify that moving along a contour leaves $z$ unchanged.
+\end{enumerate}
+
+\textbf{A complete answer must include.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Four complete equations of the form $y = \frac{1}{2}x + \frac{c}{2}$.
+    \item Explicit numerical values for slope and all four intercepts.
+    \item The direction of increasing $z$ (e.g., $(-1, 2)$ or any vector with $\Delta x < 0$ and $\Delta y > 0$).
+    \item Proof that moving along the direction $(2,1)$ yields $\Delta z = 0$.
+\end{itemize}
+
+\textbf{Common mistakes.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Confusing the slope of the line in the $xy$-plane with the slope of the surface in $\R^3$.
+    \item Inverting the sign of $x$ when solving for $y$ (e.g., writing $y = -x/2$).
+    \item Labeling contour axes with $z$.
+\end{itemize}
+
+% -------------------------------------------------------------------------
+% PROBLEM TYPE PT-10
+% -------------------------------------------------------------------------
+\subsection{Problem Type PT-10: Read a Labelled Contour Map and Bracket / Interpolate Values}\label{pt:10}
+
+\textbf{Meaning and recognition.} 
+Topographic maps, weather charts (isobars, isotherms), and experimental contour plots require estimating function values at points not lying exactly on an drawn contour line.
+\begin{itemize}[leftmargin=*,nosep]
+    \item \textbf{Bracketing:} An interior point located between contours of values $c_1$ and $c_2$ is rigorously bracketed: $\min(c_1,c_2) < f(x_0,y_0) < \max(c_1,c_2)$.
+    \item \textbf{Linear Interpolation Assumption:} Assumes the rate of change along the line segment between the two surrounding contours is approximately constant.
+\end{itemize}
+
+\fig{.72}{10-self-test.png}
+
+\textbf{General method.}
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Locate the coordinates:} Pinpoint $(x_0,y_0)$ using the map's coordinate axes.
+    \item \textbf{Identify bounding contours:} Find the two adjacent contour lines enclosing the point and record their labels $c_1, c_2$.
+    \item \textbf{State the bracket:} Write the strict inequality $c_1 < f(x_0,y_0) < c_2$ (or $c_2 < f < c_1$).
+    \item \textbf{Measure relative distance:} Determine the fraction $t \in (0,1)$ of the total distance from the $c_1$ contour to the $c_2$ contour along the shortest path through the point.
+    \item \textbf{Interpolate linearly:} Compute $f_{\text{est}} \approx c_1 + t(c_2 - c_1)$.
+    \item \textbf{State caveats:} Clearly state that linear interpolation provides an approximation, not an exact result, unless the function is known to be linear.
+\end{enumerate}
+
+\textbf{Teaching example.}
+
+\textbf{Question.} 
+On the labelled contour map of $q(x,y) = 12 - x^2 - y^2$ shown above, consider the point $A = (1.5, 0)$.
+\begin{enumerate}[label=(\alph*),nosep]
+    \item Identify the two drawn contours that enclose point $A$, and state a rigorous bounding inequality for $q(1.5,0)$.
+    \item Using radial distances from the origin to the enclosing contours, perform linear interpolation to estimate $q(1.5,0)$. State the interpolation assumption explicitly.
+    \item Calculate the exact value of $q(1.5,0)$ using the formula, and explain why the interpolated value differs slightly from the exact value.
+\end{enumerate}
+
+\textbf{A complete answer must include.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Identification of enclosing levels $c=10$ (radius $\sqrt{2}$) and $c=8$ (radius $2$).
+    \item Bounding statement $8 < q(1.5,0) < 10$.
+    \item Explicit linear interpolation calculation based on relative radial position.
+    \item Exact evaluation $q(1.5,0) = 12 - (1.5)^2 = 9.75$.
+    \item Explanation that $q(r)$ is quadratic, so linear interpolation along $r$ incurs a small truncation error.
+\end{itemize}
+
+\textbf{Common mistakes.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Reporting an interpolated reading as an exact measurement.
+    \item Interpolating along arbitrary non-perpendicular directions.
+\end{itemize}
+
+\subsection{Supplementary Map Representation: The Corn-Yield Diagram}\label{sec:corn-map}
+The textbook (Section 12.3, p.~712) presents an empirical contour map of corn yield $C=f(R,T)$, where rainfall $R$ is in inches and temperature $T$ is in $^\circ\text{F}$. Yield $C$ is expressed as a percentage of normal yield.
+\fig{.68}{source-corn.png}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Point $(R,T) = (18, 78)$ lies directly on the contour $C = 100$.
+    \item Point $(12, 76)$ lies between $80$ and $90$, estimated at approximately $85$.
+    \item Notice that optimal yield occurs in a central elliptical region; both too much and too little rain reduce yield.
+\end{itemize}
+
+% -------------------------------------------------------------------------
+% PROBLEM TYPE PT-11
+% -------------------------------------------------------------------------
+\subsection{Problem Type PT-11: Construct and Interpolate Contours from Numerical Data Tables}\label{pt:11}
+
+\textbf{Meaning and recognition.} 
+A two-input data table presents values $z = f(x,y)$ at a discrete grid of points $(x_i, y_j)$. Estimating a contour line $f(x,y) = c$ requires:
+\begin{itemize}[leftmargin=*,nosep]
+    \item Finding exact grid matches where $f(x_i, y_j) = c$.
+    \item Finding grid edges where adjacent entries straddle $c$ (one entry $< c$ and the other $> c$).
+    \item Interpolating along each straddled grid segment to locate the crossing point.
+\end{itemize}
+
+\fig{.88}{08-table-production.png}
+
+\textbf{General method.}
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Scan rows and columns:} Locate all adjacent pairs of grid points between which the value $c$ falls.
+    \item \textbf{Apply 1D linear interpolation:} Along a grid segment between $(x_1, y)$ with value $z_1$ and $(x_2, y)$ with value $z_2$, solve for $x$:
+    \[ x = x_1 + \frac{c - z_1}{z_2 - z_1}(x_2 - x_1). \]
+    \item \textbf{Plot crossing points:} Mark all interpolated points on a coordinate grid.
+    \item \textbf{Connect points smoothly:} Draw contour segments consistent with adjacent grid values.
+    \item \textbf{State modeling limits:} A finite table only supports an empirical model within the sampled region; it does not prove global behavior.
+\end{enumerate}
+
+\textbf{Teaching example.}
+
+\textbf{Question.} 
+The table below displays values of a function $f(x,y)$ on the square $0 \le x, y \le 4$.
+\begin{center}
+\begin{tabular}{c|rrr}
+\toprule
+$y \backslash x$ & $0$ & $2$ & $4$ \\
+\midrule
+$0$ & $12$ & $8$ & $4$ \\
+$2$ & $10$ & $6$ & $2$ \\
+$4$ & $8$  & $4$ & $0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{enumerate}[label=(\alph*),nosep]
+    \item Estimate the coordinates where the contour $f(x,y) = 6$ intersects the horizontal grid lines $y = 0$, $y = 2$, and $y = 4$ using linear interpolation along rows.
+    \item Plot these points in the $xy$-plane and describe the resulting contour curve.
+    \item Find a linear equation $Ax + By = C$ that fits these interpolated points, and explain why this formula represents an empirical interpolation rather than a proven global identity.
+\end{enumerate}
+
+\textbf{A complete answer must include.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Explicit 1D interpolation calculations for rows $y=0$, $y=2$, and $y=4$.
+    \item Coordinates of the three crossing points: $(3,0)$, $(2,2)$, $(1,4)$.
+    \item The line equation $2x + y = 6$.
+    \item A clear statement that the finite grid entries do not rule out nonlinear fluctuations between sampled points.
+\end{itemize}
+
+\textbf{Common mistakes.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Confusing rows and columns (reading $x$ vertically instead of horizontally).
+    \item Extending the interpolated contour line beyond the boundary of the sampled square.
+\end{itemize}
+
+% -------------------------------------------------------------------------
+% PROBLEM TYPE PT-12
+% -------------------------------------------------------------------------
+\subsection{Problem Type PT-12: Analyze Saddle Contours, Hyperbolic Branches, and Intersecting Zero Levels}\label{pt:12}
+
+\textbf{Meaning and recognition.} 
+For the saddle surface $f(x,y) = x^2 - y^2$:
+\begin{itemize}[leftmargin=*,nosep]
+    \item The level $f(x,y) = 0$ yields $x^2 - y^2 = 0 \implies (x-y)(x+y) = 0$. This consists of \textbf{two perpendicular intersecting lines} $y = x$ and $y = -x$.
+    \item This does \emph{not} violate the non-intersecting rule, because both lines belong to the \textbf{same level} $c=0$.
+    \item For $c > 0$, $x^2 - y^2 = c$ gives hyperbolas opening along the $x$-axis (left and right).
+    \item For $c < 0$, $x^2 - y^2 = c \implies y^2 - x^2 = -c > 0$ gives hyperbolas opening along the $y$-axis (top and bottom).
+\end{itemize}
+
+\textbf{General method.}
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Factor the zero level:} Solve $f(x,y) = 0$ algebraically to identify intersecting lines or asymptotes.
+    \item \textbf{Classify sign sectors:} Determine which regions in the domain have $f > 0$ ($|x| > |y|$) and $f < 0$ ($|y| > |x|$).
+    \item \textbf{Determine hyperbola vertices and axes:} For $c \ne 0$, find intercepts $(\pm\sqrt{c}, 0)$ for $c>0$, or $(0, \pm\sqrt{-c})$ for $c<0$.
+    \item \textbf{Read table symmetries:} Note even symmetries in $x$ and $y$, and the sign flip under swapping $x \leftrightarrow y$.
+    \item \textbf{Relate to 3D saddle:} Conclude that ridges rise along the $x$-axis while valleys drop along the $y$-axis.
+\end{enumerate}
+
+\textbf{Teaching example.}
+
+\textbf{Question.} 
+Consider the $7 \times 7$ integer evaluation table for $f(x,y) = x^2 - y^2$ on $[-3,3] \times [-3,3]$:
+\begin{center}
+\small
+\begin{tabular}{c|rrrrrrr}
+\toprule
+$y \backslash x$ & $-3$ & $-2$ & $-1$ & $0$ & $1$ & $2$ & $3$ \\
+\midrule
+$3$  & $0$  & $-5$ & $-8$ & $-9$ & $-8$ & $-5$ & $0$  \\
+$2$  & $5$  & $0$  & $-3$ & $-4$ & $-3$ & $0$  & $5$  \\
+$1$  & $8$  & $3$  & $0$  & $-1$ & $0$  & $3$  & $8$  \\
+$0$  & $9$  & $4$  & $1$  & $0$  & $1$  & $4$  & $9$  \\
+$-1$ & $8$  & $3$  & $0$  & $-1$ & $0$  & $3$  & $8$  \\
+$-2$ & $5$  & $0$  & $-3$ & $-4$ & $-3$ & $0$  & $5$  \\
+$-3$ & $0$  & $-5$ & $-8$ & $-9$ & $-8$ & $-5$ & $0$  \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{enumerate}[label=(\alph*),nosep]
+    \item Identify all table entries equal to $0$ and show that they correspond to two intersecting straight lines.
+    \item Describe the geometric shape, number of disconnected branches, and opening direction for the contours $c = 4, 2, 0, -2, -4$.
+    \item Explain why the intersection of contours at the origin does not violate the rule that contours cannot cross.
+\end{enumerate}
+
+\textbf{A complete answer must include.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item The equations of the zero-level lines $y = x$ and $y = -x$.
+    \item Branch classification: horizontal hyperbolas for $c=2,4$; vertical hyperbolas for $c=-2,-4$.
+    \item Identification of vertices on the coordinate axes for each nonzero level.
+    \item Rigorous clarification of the non-intersecting rule: contours of \emph{distinct} heights $c_1 \ne c_2$ cannot intersect; branches of the \emph{same} level $c=0$ can and do intersect at stationary points.
+\end{itemize}
+
+\textbf{Common mistakes.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Asserting that a saddle function is invalid because its contours cross.
+    \item Confusing the orientation of positive and negative hyperbola branches.
+\end{itemize}
+
+% -------------------------------------------------------------------------
+% PROBLEM TYPE PT-13
+% -------------------------------------------------------------------------
+\subsection{Problem Type PT-13: Model a Finite-Domain Surface, Bounded Contours, and 3D Distances}\label{pt:13}
+
+\textbf{Meaning and recognition.} 
+Physical structures (such as roofs, tents, or bounded plates) have restricted domains. Unrestricted equations would generate infinite surfaces (e.g., infinite cylinders or planes), but boundary conditions restrict the graph and truncate contours into finite line segments. Calculating physical distances requires the 3D Euclidean distance formula:
+\[ d(P_1, P_2) = \sqrt{(\Delta x)^2 + (\Delta y)^2 + (\Delta z)^2}. \]
+
+\fig{.88}{06-tent.png}
+\fig{.65}{14-distance.png}
+
+\textbf{General method.}
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Define piecewise height functions:} Model planar faces by calculating slopes along independent coordinates and specifying domain bounds.
+    \item \textbf{Solve for level sets within bounds:} Set $h(x,y) = c$ on each piece and intersect with the piecewise domain.
+    \item \textbf{Plot bounded contours:} Draw contour segments truncated strictly at domain boundaries.
+    \item \textbf{Compute 3D coordinates:} Evaluate $z = h(x,y)$ to obtain full 3D coordinates $(x,y,z)$ of physical points.
+    \item \textbf{Apply Euclidean distance:} Use the 3D distance formula and attach proper physical units.
+\end{enumerate}
+
+\textbf{Teaching example.}
+
+\textbf{Question.} 
+A camping tent has a rectangular base on the ground ($z=0$) with corners $A=(0,0,0)$, $B=(2,0,0)$, $C=(2,3,0)$, and $D=(0,3,0)$, and a horizontal ridge along the line connecting $P=(1,0,4)$ and $Q=(1,3,4)$ (all dimensions in metres).
+\begin{enumerate}[label=(\alph*),nosep]
+    \item Find a piecewise algebraic formula for the roof height $h(x,y)$, specifying its domain.
+    \item For $0 < c < 4$, solve $h(x,y) = c$ and sketch the contours for $c = 0, 1, 2, 3, 4$ m.
+    \item A pair of shoes is located on the ground at $(0,1,0)$, and a bug is crawling on the tent roof at $(1/2, 1, h(1/2,1))$. Calculate the exact 3D straight-line distance between the shoes and the bug.
+\end{enumerate}
+
+\textbf{A complete answer must include.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Complete piecewise formula $h(x,y)$ with explicit domains for both slopes ($0 \le x \le 1$ and $1 \le x \le 2$) and $0 \le y \le 3$.
+    \item Two vertical segment equations $x = c/4$ and $x = 2 - c/4$ with $0 \le y \le 3$ for each intermediate level.
+    \item The 3D bug position $(1/2, 1, 2)$.
+    \item Exact distance calculation showing $\Delta x, \Delta y, \Delta z$ steps and final value $\frac{\sqrt{17}}{2}$ m.
+\end{itemize}
+
+\textbf{Common mistakes.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Extending the contour lines infinitely across the entire plane without imposing $0 \le y \le 3$.
+    \item Computing only the 2D horizontal distance $\Delta x = 1/2$ and neglecting the vertical height $\Delta z = 2$.
+    \item Omitting physical units (metres).
+\end{itemize}
+
+\clearpage
+
+% =========================================================================
+% SECTION 5: SUPPLEMENTARY MATERIAL
+% =========================================================================
+\section{Supplementary: Review, Transformations, and Production}\label{sec:supplementary}
+\begin{statusbox}{Status: Supplementary material}
+\textbf{Context:} Covers Section 12.1 review concepts present in weekly lecture files (3D coordinate geometry, distance, coordinate planes), qualitative thermal cross-sections, and Cobb-Douglas production functions from Section 12.3.
+\end{statusbox}
+
+\subsection{Review: 3D Coordinates and Distance to Coordinate Planes}\label{sec:review-coords}
+In $\R^3$, a point $P = (x_0, y_0, z_0)$ has orthogonal projections onto the coordinate planes:
+\begin{itemize}[leftmargin=*,nosep]
+    \item Distance to $xy$-plane ($z=0$): $|z_0|$.
+    \item Distance to $xz$-plane ($y=0$): $|y_0|$.
+    \item Distance to $yz$-plane ($x=0$): $|x_0|$.
+    \item Distance to $y$-axis ($x=0, z=0$): $\sqrt{x_0^2 + z_0^2}$.
+\end{itemize}
+\fig{.75}{13-coordinates-plane.png}
+
+\subsection{Review: Wind-Chill Table ($C = f(w,T)$)}\label{sec:wind-chill}
+The September 16 lecture reviews 12.1 using the atmospheric wind-chill function $C = f(w,T)$, where wind speed $w$ is in mph, actual temperature $T$ is in $^\circ\text{F}$, and wind chill $C$ is in $^\circ\text{F}$.
+\begin{itemize}[leftmargin=*,nosep]
+    \item \textbf{Fixed row (fixed $w$):} As $T$ increases, $C$ increases (warmer air feels warmer).
+    \item \textbf{Fixed column (fixed $T$):} As $w$ increases, $C$ decreases (stronger wind causes greater evaporative and convective cooling).
+\end{itemize}
+See \texttt{Answers-and-Practice.tex} for the full table and lookup solutions.
+
+\subsection{Qualitative Thermal Model: Room Heater Cross-Sections}\label{sec:heater}
+In the lecture question regarding room temperature $T = f(d,t)$ (distance $d$ from a heater in metres, time $t$ in minutes):
+\begin{itemize}[leftmargin=*,nosep]
+    \item \textbf{Holding $d$ fixed ($d = d_0$):} Temperature rises over time toward a steady-state asymptote.
+    \item \textbf{Holding $t$ fixed ($t = t_0$):} Temperature decays monotonically as distance $d$ from the heat source increases.
+\end{itemize}
+\fig{.82}{12-heater-cross-sections.png}
+
+% -------------------------------------------------------------------------
+% PROBLEM TYPE PT-14
+% -------------------------------------------------------------------------
+\subsection{Problem Type PT-14: Analyze Multivariable Economic Models and Trade-offs along Contours}\label{pt:14}
+
+\textbf{Meaning and recognition.} 
+In economics, production output $P$ is modeled as a function of inputs such as labor $N$ (or $L$) and capital $V$ (or $K$). A standard model is the \textbf{Cobb-Douglas production function}:
+\[ P(N,V) = c N^\alpha V^\beta \quad (c > 0,\ \alpha > 0,\ \beta > 0). \]
+Contour lines of a production function are called \textbf{isoquants} (curves of constant production). Along an isoquant:
+\begin{itemize}[leftmargin=*,nosep]
+    \item One input can substitute for the other: increasing labor $N$ allows capital $V$ to decrease while maintaining identical output $P_0$.
+    \item Solving for $V$ gives $V = \left(\frac{P_0}{c}\right)^{1/\beta} N^{-\alpha/\beta}$. Since $\alpha/\beta > 0$, $V$ is a decreasing, strictly convex function of $N$.
+    \item Isoquants for $P_0 > 0$ \textbf{never touch or cross the coordinate axes}, because if $N=0$ or $V=0$, production collapses to $P=0$.
+\end{itemize}
+
+\fig{.72}{source-production.png}
+
+\textbf{General method.}
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Set $P(N,V) = P_0$:} Fix the output constant.
+    \item \textbf{Solve for one input as a function of the other:} Express $V$ explicitly as $V(N)$.
+    \item \textbf{Determine asymptotic behavior:} Examine $N \to 0^+$ ($V \to \infty$) and $N \to \infty$ ($V \to 0^+$).
+    \item \textbf{Compute input trade-offs:} Calculate how scaling one input by factor $k$ requires scaling the other input to maintain constant production.
+    \item \textbf{Interpret economic meaning:} Explain the marginal rate of technical substitution along the contour.
+\end{enumerate}
+
+\textbf{Teaching example.}
+
+\textbf{Question.} 
+Consider the production function $P(N,V) = \sqrt{NV}$ for labor $N > 0$ and capital $V > 0$.
+\begin{enumerate}[label=(\alph*),nosep]
+    \item Find the algebraic equation for the isoquant (contour curve) corresponding to constant production $P = 4$.
+    \item Explain why this contour curve never intersects the $N$-axis or the $V$-axis.
+    \item If the quantity of labor $N$ is doubled from $N_0$ to $2N_0$, determine what must happen to capital $V$ to maintain the same production level $P = 4$.
+\end{enumerate}
+
+\textbf{A complete answer must include.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Explicit isoquant formula $V = 16/N$ (first-quadrant hyperbola).
+    \item Mathematical and economic explanation of why $N=0$ or $V=0$ produces $P=0 \ne 4$.
+    \item Exact calculation showing that capital must be halved ($V_{\text{new}} = V_0/2$).
+\end{itemize}
+
+\textbf{Common mistakes.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Drawing production contours that intersect the coordinate axes (like circles).
+    \item Forgetting that economic inputs $N, V$ are strictly positive in this model.
+\end{itemize}
+
+\clearpage
+
+% =========================================================================
+% SECTION 6: PREVIEW MATERIAL
+% =========================================================================
+\section{Preview: Later-Section Material in Weekly Files}\label{sec:preview}
+\begin{statusbox}{Status: Preview material}
+\textbf{Context:} The weekly lecture slides contain advance previews of Section 12.4 (Linear functions, planes, and tables) and Section 12.5 (Functions of three variables and level surfaces). Covered here for complete weekly source fidelity.
+\end{statusbox}
+
+\subsection{12.4 Preview: Linear Functions and Planes}\label{sec:preview-12-4}
+A function $f(x,y)$ is linear if its formula is $f(x,y) = ax + by + c$.
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Graph in $\R^3$:} The graph $z = ax + by + c$ is a flat, infinite plane.
+    \item \textbf{Intercept Form:} If a plane has non-zero intercepts $(x_0, 0, 0)$, $(0, y_0, 0)$, and $(0, 0, z_0)$, its equation is:
+    \[ \frac{x}{x_0} + \frac{y}{y_0} + \frac{z}{z_0} = 1. \]
+    \item \textbf{Linearity Test for Tables:} A two-input table represents a linear function if and only if:
+    \begin{itemize}[nosep]
+        \item Across every row (fixed $y$), equal steps in $x$ produce equal changes $\Delta z$ (constant $\Delta z / \Delta x$).
+        \item Down every column (fixed $x$), equal steps in $y$ produce equal changes $\Delta z$ (constant $\Delta z / \Delta y$).
+    \end{itemize}
+\end{itemize}
+
+\fig{.90}{09-level-surfaces.png}
+
+% -------------------------------------------------------------------------
+% PROBLEM TYPE PT-15
+% -------------------------------------------------------------------------
+\subsection{Problem Type PT-15: Describe and Visualize Level Surfaces of Three-Variable Functions}\label{pt:15}
+
+\textbf{Meaning and recognition.} 
+For a function of three variables $w = F(x,y,z)$:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{4D Graph:} The graph $G_F = \{(x,y,z,w) \in \R^4 : w = F(x,y,z)\}$ requires four spatial dimensions and cannot be visualized directly.
+    \item \textbf{Level Surfaces in 3D:} Setting $F(x,y,z) = c$ defines a two-dimensional \textbf{level surface} embedded directly in ordinary 3D space.
+    \item Points on the surface $F(x,y,z)=c$ represent spatial locations where the physical quantity (e.g., temperature, density, potential) is constant.
+\end{itemize}
+
+\textbf{General method.}
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Set $F(x,y,z) = c$:} Establish the implicit equation for a chosen constant $c$.
+    \item \textbf{Identify permissible values of $c$:} Enforce range constraints on $F$.
+    \item \textbf{Classify the 3D surface:}
+    \begin{itemize}[nosep]
+        \item $x^2 + y^2 + z^2 = r(c)^2$: concentric spheres centered at the origin.
+        \item $x^2 + y^2 = r(c)^2$ (missing $z$): concentric circular cylinders parallel to the $z$-axis.
+        \item $Ax + By + Cz = c$: parallel planes with normal vector $(A,B,C)$.
+    \end{itemize}
+    \item \textbf{Describe orientation and geometric parameters:} State center, radius, or normal vector as functions of $c$.
+\end{enumerate}
+
+\textbf{Teaching example.}
+
+\textbf{Question.} 
+In a solid block of ice, temperature is modeled by $T(x,y,z) = \frac{1}{4}(x^2 + y^2 + z^2)$ in $^\circ\text{C}$, with coordinates $x,y,z$ measured in metres.
+\begin{enumerate}[label=(\alph*),nosep]
+    \item Explain why the graph of $T$ cannot be drawn in ordinary 3D space, and define what a level surface represents physically.
+    \item Describe the level surfaces of $T$ corresponding to temperatures $T = 1^\circ\text{C}$, $5^\circ\text{C}$, and $9^\circ\text{C}$, specifying their geometric type, center, and exact radii.
+    \item Describe the geometric nature of the level surfaces for the three functions:
+    (i) $F(x,y,z) = e^{-(x^2+y^2)}$, (ii) $G(x,y,z) = z - y$, and (iii) $H(x,y,z) = \ln(x^2+y^2+z^2)$.
+\end{enumerate}
+
+\textbf{A complete answer must include.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Explanation that graphing $w=T(x,y,z)$ requires 4 dimensions $(x,y,z,w)$, whereas level surfaces live in 3D.
+    \item Exact classification of $T=c$ as concentric spheres $x^2+y^2+z^2 = 4c$ with radii $2$ m, $2\sqrt{5}$ m, and $6$ m.
+    \item Identification of (i) as circular cylinders parallel to $z$ for $0<c<1$ (and the $z$-axis for $c=1$); (ii) as parallel planes inclined at $45^\circ$ to the $y$- and $z$-axes and parallel to the $x$-axis; (iii) as concentric spheres of radii $e^{c/2}$ for all $c \in \R$, with the origin excluded.
+\end{itemize}
+
+\textbf{Common mistakes.}
+\begin{itemize}[leftmargin=*,nosep]
+    \item Confusing a 2D contour in the $xy$-plane of a 2-variable function with a 2D level surface in 3D space of a 3-variable function.
+    \item Forgetting to square-root the radius term (e.g., writing radius is $4c$ instead of $\sqrt{4c}$).
+    \item Claiming $e^{-(x^2+y^2)} = c$ has level surfaces for $c \le 0$ or $c > 1$.
+\end{itemize}
+
+\end{document}

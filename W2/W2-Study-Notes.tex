@@ -1,0 +1,187 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=0.82in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,mathtools,booktabs,longtable,array,graphicx,microtype,xcolor,enumitem,fancyhdr,hyperref}
+\usepackage[most]{tcolorbox}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,urlcolor=blue!55!black,pdftitle={MAT235 Week 2 Study Notes: Sections 12.2 and 12.3}}
+\setlength{\headheight}{14pt}\pagestyle{fancy}\fancyhf{}\lhead{MAT235 --- Week 2}\rhead{12.2 Graphs \& Surfaces \quad 12.3 Contours}\cfoot{\thepage}
+\setcounter{tocdepth}{2}\setlength{\parskip}{4pt}\setlength{\parindent}{0pt}
+\newtcolorbox{statusbox}[1]{colback=blue!4,colframe=blue!45!black,title=#1,breakable}
+\newcommand{\fig}[2]{\begin{center}\includegraphics[width=#1\linewidth]{graphs/#2}\end{center}}
+\newcommand{\problem}[1]{\subsection{Problem type: #1}}
+\newcommand{\teach}{\textbf{Teaching example (original).}\quad}
+\newcommand{\question}{\par\textbf{Question.}\quad}
+\newcommand{\solution}{\par\textbf{Worked solution.}\quad}
+\newcommand{\answer}{\par\textbf{Answer.}\quad}
+\newcommand{\mistake}{\par\textbf{Common mistakes.}\quad}
+\newcommand{\R}{\mathbb R}
+\begin{document}
+\hypersetup{pageanchor=false}
+\begin{titlepage}\centering\vspace*{1.4in}{\Huge\bfseries MAT235 Week 2\\[12pt] Study Notes\par}\vspace{20pt}{\LARGE Section 12.2: Graphs and Surfaces\\Section 12.3: Contour Diagrams\par}\vspace{25pt}{\large Complete English notes, worked weekly questions, suggested 8th-edition textbook practice, and self-test\par}\vfill{\large Source-based working edition --- 17 September 2026\par}\end{titlepage}
+\hypersetup{pageanchor=true}\pagenumbering{roman}
+\tableofcontents\clearpage\pagenumbering{arabic}
+\section*{How to use this file}\addcontentsline{toc}{section}{How to use this file}
+Study the \hyperref[graph]{graph and surface} and \hyperref[contour]{contour} sections first. Each problem-type section states a full teaching question before its worked solution. Then do the \hyperref[weekly]{weekly source questions}, the \hyperref[textbook]{suggested textbook practice}, and finally the \hyperref[selftest]{original self-test}. The \hyperref[audit]{coverage audit} lists source pages and corrections. Sections 12.2 and 12.3 are the core; other material is labelled supplementary or preview. In a 3D drawing, a finite patch is a viewing window unless a domain restriction is explicitly stated.
+
+\section{Core: 12.2 Graphs and surfaces}\label{graph}
+\begin{statusbox}{Status: Core material}Learning targets: describe $z=f(x,y)$ using familiar surfaces; obtain and draw vertical cross-sections; recognize a cylinder from a missing variable or a direction of extrusion.\end{statusbox}
+For a function $f:D\subseteq\R^2\to\R$, its \emph{graph} is
+\[G_f=\{(x,y,z)\in\R^3:(x,y)\in D,\ z=f(x,y)\}.\]
+The inputs $x,y$ are horizontal coordinates, and $z$ is the output/height. For each allowed input pair there is exactly one graph point. Accordingly every line parallel to the $z$-axis intersects the graph at most once. This is the \emph{vertical-line test for a surface}. A general equation in three variables can describe a plane, sphere, cylinder, or other set without giving a single-valued function $z=f(x,y)$.
+
+\problem{Recognize and describe a surface}\label{surface}
+\textbf{How to answer a ``describe the surface'' question:}
+\begin{enumerate}[leftmargin=*,nosep]
+\item \textbf{Identify the object:} plane, sphere, paraboloid, saddle, cylinder, or another surface. A missing variable is free and usually gives an extrusion direction.
+\item \textbf{Give key features:} intercepts or reference points; centre, radius, axis, or vertex when relevant; and any domain restriction.
+\item \textbf{Find useful traces:} set $x=0$, $y=0$, or $z=0$, or fix another simple value. Give both the curve equation and its containing plane.
+\item \textbf{Describe orientation and extent:} state how height changes, which direction is free, and whether the object is finite or infinite.
+\item \textbf{Sketch from the traces:} label $x,y,z$, important points, fixed values, and cross-sections. The drawing may show only a finite viewing window.
+\end{enumerate}
+\textbf{Answer template.} ``The graph is a [surface]. Its key features are [features]. Its useful traces are [equations and planes]. It is oriented [description] and extends [extent].'' A mathematically accurate labelled sketch is sufficient; it need not look perfectly realistic.
+
+Recognize equations using their 2D traces, symmetry, and missing variables. A plane has a linear equation; $z=x^2+y^2$ is an upward circular paraboloid; $z=x^2-y^2$ is a saddle; $x^2+y^2+z^2=r^2$ is a sphere. A complete graph description gives the object, location, orientation, intercepts/reference points, traces, fixed/free variables, domain and extent. Existence of a single $z$ for each $(x,y)$ settles whether the entire surface is $z=f(x,y)$.
+\teach\question Describe $z=1+x-y$ and $x^2+y^2+z^2=4$ in $\R^3$. For each, decide whether the whole surface is $z=f(x,y)$, give useful intercepts or cross-sections, and state its extent.
+\solution The first equation is $x-y-z=-1$, so it is a plane. Its axis intercepts are $(-1,0,0),(0,1,0),(0,0,1)$. At $y=0$ its trace is $z=1+x$; at $x=0$ it is $z=1-y$; at $z=0$ it is $y=1+x$. Increasing $x$ by one raises $z$ by one; increasing $y$ by one lowers it by one. Both inputs are unrestricted. The second is a radius-2 sphere centered at the origin. At $(x,y)=(0,0)$ it has $z=\pm2$. Its $z=c$ section is $x^2+y^2=4-c^2$ for $|c|\leq2$; the sphere is finite.
+\answer The plane is the graph of $f(x,y)=1+x-y$ over $\R^2$ and extends infinitely. The full sphere is not a $z$-function; it is the union of the upper and lower hemisphere graphs $z=\pm\sqrt{4-x^2-y^2}$ over the disk $x^2+y^2\leq4$.
+\mistake Showing only one sign after solving the sphere equation; treating the plane's displayed finite patch as its true boundary.
+\fig{.93}{01-surfaces.png}
+
+\problem{Test a sphere or hemisphere as a function}
+The upper or lower hemisphere is a function over a \emph{disk}, not over an entire square. At a boundary point the two branches meet at $z=0$. Specify $z\geq0$ or $z\leq0$ when taking a square root.
+\teach\question The handwritten notes (\texttt{sep+14.pdf}, pp.~1--2) ask whether $x^2+y^2+z^2=1$ is the graph of a function $z=f(x,y)$. If not, split it into two graphs and state their exact domain.
+\solution At $(x,y)=(0,0)$, $z=1$ and $z=-1$ both occur. Solving gives $z=\pm\sqrt{1-x^2-y^2}$, real exactly when $1-x^2-y^2\geq0$.
+\answer The full sphere fails the vertical-line test. Its hemispheres are $z=\sqrt{1-x^2-y^2}$ and $z=-\sqrt{1-x^2-y^2}$ on $D=\{(x,y):x^2+y^2\leq1\}$. The $x$ and $y$ bounds $[-1,1]$ alone are insufficient.
+\mistake Replacing the disk with the whole square $[-1,1]^2$ or omitting one branch.
+\fig{.86}{02-sphere-cylinder.png}
+
+\problem{Transform a known graph}\label{transform}
+If $z=f(x,y)$ is known, $z=f(x-a,y-b)+c$ translates its graph by $(a,b,c)$. The graph $z=-f(x,y)$ is reflected in the $xy$-plane; multiplying heights by a positive factor stretches them vertically. Check a distinctive point, usually the vertex, to avoid reversing a shift.
+\teach\question Starting from $z=x^2+y^2$, describe the graphs of (a) $z=(x-1)^2+(y-2)^2$, (b) $z=5-x^2-y^2$, and (c) $z=e^{-(x^2+y^2)}$. Give vertices or extrema, symmetry, and extent.
+\solution In (a), the squared terms vanish at $(1,2)$, translating the upward bowl. In (b), the negative squares make the greatest height $5$ at $(0,0)$; reflecting then raising gives the result. In (c), equal values occur at equal radius $r=\sqrt{x^2+y^2}$, since $z=e^{-r^2}$; the maximum is $1$ at the origin and $z$ approaches $0$ as $r\to\infty$.
+\answer (a) Upward paraboloid, vertex $(1,2,0)$. (b) Downward paraboloid, vertex $(0,0,5)$ and range $(-\infty,5]$. (c) Circularly symmetric positive bell, peak $(0,0,1)$; $z>0$ everywhere and has horizontal asymptote $z=0$ far away. All three use unrestricted inputs.
+\mistake Translating (a) to $(-1,-2)$; calling $z=0$ an attained contour of (c).
+\fig{.96}{07-transformations.png}
+
+\section{Core: vertical cross-sections}\label{cross}
+A cross-section holds one \emph{input} fixed and intersects the graph with a vertical plane. At $x=a$ the points satisfy $x=a,\ z=f(a,y)$, and the graph is drawn with horizontal coordinate $y$ and vertical coordinate $z$. At $y=b$ the points satisfy $y=b,\ z=f(x,b)$, drawn with horizontal coordinate $x$. The fixed-coordinate equation is part of the 3D curve: writing $z=f(x,b)$ alone does not specify where the slice lies.
+
+\problem{Find and interpret parabolic traces}
+Use substitution first, then recognize the 2D curve in its vertical plane. Vary the fixed constant to see how the family moves. For $z=x^2+y^2$, $y=b$ gives $z=x^2+b^2$: identical upward parabolas shifted up by $b^2$. For $z=x^2-y^2$, the two families bend in opposite directions and expose a saddle.
+\teach\question For $z=x^2-y^2$, find the cross-sections $y=-1,0,1$ and $x=-1,0,1$. Describe their shape, vertex heights, and what they show about the full graph.
+\solution At $y=b$, $z=x^2-b^2$, an upward parabola with vertex $(x,z)=(0,-b^2)$; thus heights are $-1,0,-1$. At $x=a$, $z=a^2-y^2$, a downward parabola with vertex $(y,z)=(0,a^2)$; heights are $1,0,1$. Each curve remains in its own vertical plane.
+\answer The graph is the hyperbolic paraboloid or saddle $z=x^2-y^2$: it rises along $\pm x$, falls along $\pm y$, and extends without bound in both horizontal directions.
+\mistake Calling a 1D cross-section a paraboloid; dropping the plane equation $x=a$ or $y=b$.
+\fig{.75}{01-surfaces.png}
+
+\problem{Draw nonlinear and linear trace families}
+If a substituted expression has a cube, compare zeros and turning points; if it is linear, read slope and intercept. Put all curves in a family on common axes and label the held input. If $x$ is fixed, the plot axes are $y,z$; if $y$ is fixed, they are $x,z$.
+\teach\question For $f(x,y)=y^3+xy$, draw the $x=-1,0,1$ cross-sections on one $yz$-plot and the $y=-1,0,1$ cross-sections on one $xz$-plot. State every equation.
+\solution Substitution gives $x=-1: z=y^3-y$, $x=0: z=y^3$, $x=1: z=y^3+y$. The first has zeros $-1,0,1$; the other two are monotone increasing. For fixed $y$, $y=-1: z=-1-x$, $y=0: z=0$, $y=1: z=1+x$. Their slopes in $x$ are $-1,0,1$.
+\answer The two complete labelled families are displayed below. Each of the six curves is a vertical trace of the same surface, although no one curve is the entire surface.
+\mistake Plotting the $x$-fixed family against $x$ or treating $x$ and $y$ symmetrically in $y^3+xy$.
+\fig{.86}{03-cross-sections.png}
+
+\section{Core: cylinders and free variables}\label{cylinder}
+In $\R^3$, if an equation is independent of one coordinate, every solution may be translated along that coordinate's axis and still be a solution (unless an extra domain constraint is stated). This creates a \emph{cylinder} in the broad geometric sense: a curve extruded parallel to an axis. A cylinder need not be circular. A slice perpendicular to the free direction recovers the generating curve. A surface $z=x^2$ is a valid function $z=f(x,y)$ and is also a parabolic cylinder. The equation $x^2+y^2=1$ leaves $z$ free and fails the $z$-function test.
+\problem{Identify a cylinder in two or three dimensions}
+\teach\question Describe $x^2+y^2=1$ in $\R^2$ and in $\R^3$. Also describe $z=x^2$ and $y=x^2$ in $\R^3$. Name each cylinder's axis direction and whether it is $z=f(x,y)$.
+\solution In $\R^2$, $x^2+y^2=1$ is a unit circle. In $\R^3$, all $z\in\R$ are allowed over that circle, yielding vertical generator lines. In $z=x^2$, $y$ is free, and the $y=0$ generating trace is a parabola in the $xz$-plane. In $y=x^2$, $z$ is free, and the $z=0$ generating trace is a parabola in the $xy$-plane.
+\answer Respectively: circle in $\R^2$; circular cylinder parallel to $z$ in $\R^3$ (not $z=f(x,y)$); parabolic cylinder parallel to $y$ (yes, $z=f(x,y)$); parabolic cylinder parallel to $z$ (not $z=f(x,y)$). All extend infinitely in the missing-variable direction.
+\mistake Assuming ``cylinder'' always means circular, or assuming every cylinder fails the $z$-function test.\fig{.86}{02-sphere-cylinder.png}
+The September 16 lecture also slices the upper unit hemisphere at $x=1/2$. Keeping the plane condition, its equation is $x=1/2,\ z=\sqrt{3/4-y^2}$ for $|y|\leq\sqrt3/2$. In that vertical plane it is the \emph{upper semicircle} $y^2+z^2=3/4$, $z\geq0$, of radius $\sqrt3/2$; it is not a complete circle or a parabola.
+\fig{.83}{11-hemisphere-slice.png}
+
+The supplementary equation $x^2/4+y^2/9=1$ extrudes an ellipse with semiaxes $2$ and $3$ parallel to $z$. The equation $x^2-y^2=1$ extrudes two hyperbola branches parallel to $z$.
+
+\section{Core: 12.3 contours and level curves}\label{contour}
+\begin{statusbox}{Status: Core material}Learning targets: estimate values from labelled contours, distinguish them from vertical cross-sections, find them algebraically or from a table, and relate spacing and shape to the surface.\end{statusbox}
+For $c\in\R$, the \emph{level set} or \emph{contour} is
+\[L_c=\{(x,y)\in D:f(x,y)=c\}.\]
+It is the projection into the $xy$-plane of the horizontal surface intersection $z=c$. It may be a curve, a point, empty, or several components. A contour diagram draws selected $L_c$ with their \emph{values} clearly labelled. By contrast, a cross-section fixes an \emph{input}, keeps the output varying, and lies in a vertical plane. Moving along a contour does not change $f$. Contours of \emph{different values} cannot meet for a function, but two branches of the \emph{same} level can cross, as at the saddle's zero level.
+
+\problem{Distinguish a contour from a cross-section}
+\teach\question For $f(x,y)=x^2+y^2$, write and describe (a) the cross-section $x=1$ and (b) the contour $z=4$. Specify the plane, curve, coordinates held fixed, and whether it appears in the $xz$, $yz$, or $xy$ view.
+\solution At $x=1$, $z=1+y^2$; $x$ is fixed, $y$ varies, and the curve is an upward parabola in a plane parallel to $yz$. At $z=4$, $x^2+y^2=4$; $z$ is fixed and the projected curve is a radius-2 circle in the $xy$-plane. The spatial circle lies at height $4$.
+\answer (a) Vertical parabola $\{(1,y,1+y^2):y\in\R\}$. (b) Horizontal level curve $\{(x,y,4):x^2+y^2=4\}$, displayed on the contour map as $x^2+y^2=4$.
+\mistake Giving the parabola as a contour or forgetting that contours on the map are projections, with their height stored in the label.
+
+\problem{Find algebraic contours and explain spacing}\label{radial}
+Set $f(x,y)=c$, solve with all restrictions on $c$, and identify the geometry. For radial functions use $r=\sqrt{x^2+y^2}$. Compare \emph{equal increments in the contour labels}: narrow gaps then indicate more rapid height change per horizontal distance. A large label gap cannot be compared directly with a small one.
+\teach\question Find levels $c=0,2,4,6,8$ for $f=x^2+y^2$ and $c=0,1,2,3$ for $g=\sqrt{x^2+y^2}$. Draw labelled maps and relate each to its 3D graph.
+\solution $f=c$ gives $r=\sqrt c$ for $c\geq0$: radii $0,\sqrt2,2,\sqrt6,2\sqrt2$. $g=c$ gives $r=c$ for $c\geq0$: radii $0,1,2,3$. At $c=0$ each level is one point; for $c<0$ both are empty. The radial distance between successive equal $f$ increments decreases outward because $\sqrt c$ grows sublinearly; for $g$ it is constant.
+\answer $f$ is an upward paraboloid that gets steeper away from its vertex; $g$ is the upward cone $z=r$ with constant radial slope (away from the apex). The labelled maps are below.
+\mistake Taking the radius of $x^2+y^2=c$ to be $c$; drawing a circle of positive radius for $c=0$; calling an empty negative level a circle.
+\fig{.93}{04-radial-contours.png}
+For the downward bowl $h=9-x^2-y^2$, $h=c$ gives $r=\sqrt{9-c}$ for $c\leq9$. The $c=9$ level is the origin and $c>9$ is empty. Equal downward steps in height spread less in radius farther from the center; the graph falls faster as $r$ increases.
+
+\problem{Plot contours of a linear function}\label{plane}
+If $f(x,y)=ax+by+d$, the level equation $ax+by=c-d$ gives parallel straight lines with normal vector $(a,b)$. If $b\ne0$, solve for $y$ to get the slope and intercept. Values increase toward $(a,b)$ and remain constant along a perpendicular direction. The graph $z=f(x,y)$ is an infinite plane even if the map displays only a finite viewing window.
+\teach\question Make a labelled contour plot for $z=2y-x$ at $z=0,2,4,6$. Give slope, one point on each line, and an increasing direction.
+\solution $2y-x=c$ gives $y=x/2+c/2$. The four lines pass through $(0,0),(0,1),(0,2),(0,3)$ and have slope $1/2$. Moving upward in $y$ or left in $x$ raises $z$; $(\Delta x,\Delta y)=(-1,2)$ raises it by $5$. The direction $(2,1)$ leaves it unchanged.
+\answer Four parallel lines $y=x/2$, $x/2+1$, $x/2+2$, $x/2+3$, labelled $0,2,4,6$ respectively. $z$ increases toward the upper left.
+\mistake Using the line's geometric slope as the direction of increasing $z$; putting $z$ on a contour-map axis.
+\fig{.89}{05-plane-saddle-contours.png}
+
+\problem{Read a labelled contour map and estimate a value}\label{estimate}
+First locate the input point using the two axis scales. Read its label if it is on a contour; otherwise identify the two surrounding labels and give the bracket between them \emph{before} estimating. To interpolate, state the assumption of approximately linear change across a small gap. The distance between contours and the value interval both matter. A map alone generally gives an estimate, not an exact formula.
+\teach\question On the labelled map of $q(x,y)=12-x^2-y^2$ below, estimate $q(1.5,0)$ from the shown $q=10$ and $q=8$ contours. First give a justified range; then use the radial position for a rough interpolated estimate. State an exact value only if using the supplied formula.
+\solution The radial distances of the $10$ and $8$ contours are $\sqrt2\approx1.414$ and $2$. Radius $1.5$ is between them, so $8<q(1.5,0)<10$. Linear interpolation in radius gives $10-2(1.5-\sqrt2)/(2-\sqrt2)\approx9.71$. Evaluating the supplied formula gives $12-1.5^2=9.75$; the small difference shows the approximation inherent in linear interpolation.
+\answer From the map alone, $8<q(1.5,0)<10$ and approximately $9.7$; from its exact formula, $q(1.5,0)=9.75$.
+\mistake Reporting a map estimate as exact; inferring high/low from shape without reading labels.
+\fig{.76}{10-self-test.png}
+The textbook's corn-yield diagram uses rainfall $R$ (inches), temperature $T$ (degrees Fahrenheit), and yield $C$ as a percentage of present production. Its printed contours provide data unavailable from the formula alone; the original labelled figure is reproduced here for reading practice. At $(R,T)=(18,78)$ it shows $C=100$, and near $(12,76)$ it shows about $85$.
+\fig{.70}{source-corn.png}
+
+\problem{Build a contour from a numerical table}\label{table}
+A table gives $f$ at isolated grid points; it does not determine values between them without an assumption. Mark exact matches to the desired level, bracket it along grid edges where endpoint values straddle it, and interpolate along those edges if locally smooth change is reasonable. Join inferred points with a curve consistent with the data, but do not claim that an affine-looking table proves an exact global affine formula.
+\teach\question The following table gives values of $f(x,y)$ on $0\leq x,y\leq4$. Estimate the $f=6$ contour inside the sampled square using linear interpolation along the rows. Show all calculated points.
+\begin{center}\begin{tabular}{c|rrr}\toprule $y\backslash x$ & $0$ & $2$ & $4$\\\midrule $0$&12&8&4\\$2$&10&6&2\\$4$&8&4&0\\\bottomrule\end{tabular}\end{center}
+Here $x$ labels columns, $y$ labels rows, and entries are values of $f$ (no physical units supplied). Across $y=0$, values fall from $8$ at $x=2$ to $4$ at $x=4$; down $x=0$, values fall from $12$ to $8$.
+\solution At $y=0$, $6$ is halfway between $8$ and $4$, so $x=3$. At $y=2$, $f(2,2)=6$ exactly. At $y=4$, $6$ is halfway between $8$ at $x=0$ and $4$ at $x=2$, so $x=1$. Connect $(3,0),(2,2),(1,4)$ inside the square. The line $2x+y=6$ fits these interpolated points and the entire displayed table, but is a model between samples.
+\answer The estimated contour is the segment through $(3,0),(2,2),(1,4)$, represented by $2x+y\approx6$ on this square under piecewise linear interpolation.
+\mistake Treating the finite data as proof that $f=12-2x-y$ everywhere; confusing rows with columns; extending a sampled contour outside the measured square.
+\fig{.84}{08-table-production.png}
+
+\problem{Interpret saddle contours and a complete table}\label{saddle}
+For $f=x^2-y^2$, $f=0$ means $(x-y)(x+y)=0$, so $y=x$ and $y=-x$ are both part of the \emph{same} level. For $c>0$, $x^2-y^2=c$ consists of two left/right opening hyperbola branches; for $c<0$, two up/down opening branches. Positive levels occupy $|x|>|y|$, and negative levels occupy $|y|>|x|$. The function is even in $x$ and in $y$, and swapping $x,y$ changes its sign.
+\teach\question Reproduce and interpret the weekly table for $f(x,y)=x^2-y^2$ at integer $x,y$ from $-3$ to $3$. Locate its zeros and describe the contours $-4,-2,0,2,4$.
+\begin{center}\small\begin{tabular}{c|rrrrrrr}\toprule $y\backslash x$&$-3$&$-2$&$-1$&0&1&2&3\\\midrule
+3&0&$-5$&$-8$&$-9$&$-8$&$-5$&0\\2&5&0&$-3$&$-4$&$-3$&0&5\\1&8&3&0&$-1$&0&3&8\\0&9&4&1&0&1&4&9\\$-1$&8&3&0&$-1$&0&3&8\\$-2$&5&0&$-3$&$-4$&$-3$&0&5\\$-3$&0&$-5$&$-8$&$-9$&$-8$&$-5$&0\\\bottomrule\end{tabular}\end{center}
+Both axes are dimensionless; each table entry is $z=f(x,y)$. For example, hold $y=2$, read across to column $x=3$, and obtain $f(3,2)=5$. Holding $x=2$, read down to $y=2$, obtaining $f(2,2)=0$. There is symmetry across either coordinate axis, but positive and negative regions swap on exchanging $x$ and $y$.
+\solution Solve $x^2-y^2=0$ for the two diagonals. For $c=2,4$, the two branch vertices are $(\pm\sqrt c,0)$; for $c=-2,-4$, they are $(0,\pm\sqrt{-c})$. Every nonzero level has two disconnected branches. Use table signs to choose each branch's sector.
+\answer The zero level is both lines $y=\pm x$. Levels $2,4$ open left/right, and levels $-2,-4$ open up/down. This is the contour signature of a saddle with ridges along $x$ and valleys along $y$.
+\mistake Claiming that the two zero-level lines violate the nonintersecting-contour rule; that rule applies to \emph{different} values.
+\fig{.86}{05-plane-saddle-contours.png}
+
+\problem{Use a finite-domain roof and its contours}\label{tent}
+Domain restrictions matter: a tent roof occupies a rectangle, so its level sets are finite segments. A height can be independent of $y$ without making the physical roof an infinite cylinder: the unrestricted equation would extrude forever, but the tent has $0\leq y\leq3$. Distance between points in $\R^3$ uses $\sqrt{(\Delta x)^2+(\Delta y)^2+(\Delta z)^2}$ and keeps units.
+\teach\question A tent has ground corners $A=(0,0,0), B=(2,0,0), C=(2,3,0), D=(0,3,0)$ and ridge endpoints $P=(1,0,4),Q=(1,3,4)$, coordinates in metres. Let $h(x,y)$ be roof height. Find $h$, draw the $0,1,2,3,4$ m contours, and find the distance from shoes at $(0,1,0)$ to a roof bug at $(1/2,1,h(1/2,1))$.
+\solution On $0\leq x\leq1$, the height rises from $0$ to $4$ in one metre, so $h=4x$; on $1\leq x\leq2$, it falls with slope $-4$, so $h=8-4x$. Always $0\leq y\leq3$. For $0<c<4$, solving gives $x=c/4$ or $x=2-c/4$. For $c=0$, $x=0,2$; for $c=4$, $x=1$. The bug height is $h(1/2,1)=2$, hence its position is $(1/2,1,2)$ and the distance is $\sqrt{(1/2)^2+0^2+2^2}=\sqrt{17}/2$.
+\answer $h(x,y)=\begin{cases}4x&0\leq x\leq1,\\8-4x&1\leq x\leq2,\end{cases}\ 0\leq y\leq3$. Each level is a vertical segment in the map, at the $x$ positions above, and the bug is $\sqrt{17}/2\,$m from the shoes.
+\mistake Extending the contour segments beyond $y=0$ or $3$, or measuring the bug's horizontal separation only.
+\fig{.91}{06-tent.png}
+\fig{.72}{14-distance.png}
+
+\section{Supplementary: review, transformations, and production}\label{supplement}
+\begin{statusbox}{Status: Supplementary material}The September 16 file contains earlier 12.1 review; the scanned September 14/16/18 notes extend the core with transformations, sphere slices, and numerical interpolation. The textbook 12.3 section also discusses production contours.\end{statusbox}
+A two-input quantity may be shown in a table even when no formula is known. If $C=f(w,T)$ denotes wind chill (degrees F) for speed $w$ in mph and temperature $T$ in degrees F, row $w=20$, column $T=5$ gives $C=-15$ F in the lecture table. At actual $T=5$ F, the entry $-10$ F occurs in row $w=10$. A complete interpretation names both inputs and the output with their units; interpolation between rows needs an assumption. See the \hyperref[weekly]{weekly source question} for the complete table.
+
+For a production model $P=cN^\alpha V^\beta$ with $c>0$, $N,V>0$, and $\alpha,\beta>0$, a fixed output $P_0>0$ gives
+\[V=\left(\frac{P_0}{c}\right)^{1/\beta}N^{-\alpha/\beta}.\]
+Thus each positive-output contour falls as $N$ increases: one input can partly substitute for the other. No positive-output contour crosses an axis for this model. For $P=\sqrt{NV}$, levels $P_0$ satisfy $V=P_0^2/N$ (first-quadrant hyperbolas). The textbook also gives the historical model $P=1.01L^{0.75}K^{0.25}$ with labor $L$ and capital $K$. A formula or labelled map is necessary for quantitative use; shape alone does not determine the output.
+\fig{.78}{08-table-production.png}
+
+\section{Preview: later-section material present in the week folder}\label{preview}
+\begin{statusbox}{Status: Preview material}The bundled lecture slides reach sections 12.4 and 12.5. Their distinct topics are recorded here because the source prompt requires complete weekly-file coverage; they are outside the requested textbook reading boundary of 12.2--12.3.\end{statusbox}
+\subsection{12.4 Linear functions and planes}
+For $f(x,y)=ax+by+c$, the graph $z=ax+by+c$ is a plane, and equal output increments give parallel equally spaced contours. In the airline table from the September 16 slides, $d$ discount tickets at $\$80$ and $f$ full-fare tickets at $\$240$ give revenue in thousands of dollars $R(d,f)=0.08d+0.24f$. The complete table and its reading appear in the \hyperref[weekly]{weekly questions}. A table with constant row/column increments is consistent with an affine formula but finite entries cannot prove behavior elsewhere. The plane through $(4,0,0),(0,3,0),(0,0,2)$ has intercept equation $x/4+y/3+z/2=1$, hence $z=2-x/2-2y/3$. The extra lecture equations $z=2-2x+y$ and $z=2-x-2y$ have intercept triples $(1,-2,2)$ and $(2,1,2)$ respectively; their planes extend beyond any displayed patch.
+\subsection{12.5 Level surfaces in three inputs}
+For $F(x,y,z)$, an equation $F=c$ generally describes a 2D \emph{level surface} in $\R^3$, not a 2D contour map of a two-input function. The temperature $T=(x^2+y^2+z^2)/4$ (degrees C, coordinates in metres) has levels $T=1,5,9$ at concentric spheres of radii $2,2\sqrt5,6$ m. The level $e^{-(x^2+y^2)}=c$ exists only for $0<c\leq1$: for $0<c<1$ it is a circular cylinder of radius $\sqrt{-\ln c}$ parallel to $z$; for $c=1$ it is the $z$-axis. The levels of $z-y$ are planes $z=y+c$ for every real $c$. The levels of $\ln(x^2+y^2+z^2)$ are spheres of radius $e^{c/2}$ for all real $c$, with the origin excluded from the function's domain.
+\fig{.94}{09-level-surfaces.png}
+
+\input{Weekly-Questions.tex}
+\input{Textbook-Practice.tex}
+\input{Self-Test.tex}
+\input{Coverage-Audit.tex}
+\end{document}
