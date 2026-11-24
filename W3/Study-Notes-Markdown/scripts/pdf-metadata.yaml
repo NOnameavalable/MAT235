@@ -1,0 +1,14 @@
+fontsize: 11pt
+linestretch: 1.18
+geometry: margin=0.78in
+header-includes:
+  - '\usepackage{titlesec}'
+  - '\usepackage{float}'
+  - '\usepackage{needspace}'
+  - '\usepackage{graphicx}'
+  - '\setlength{\parskip}{5pt plus 1pt minus 1pt}'
+  - '\setlength{\parindent}{0pt}'
+  - '\renewcommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\topsep}{4pt}\setlength{\parskip}{0pt}}'
+  - '\titlespacing*{\section}{0pt}{12pt}{6pt}'
+  - '\titlespacing*{\subsection}{0pt}{10pt}{5pt}'
+  - '\titlespacing*{\subsubsection}{0pt}{8pt}{4pt}'
